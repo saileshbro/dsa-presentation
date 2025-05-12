@@ -1,5 +1,7 @@
 \documentclass[aspectratio=169]{beamer}
-\usepackage[utf8]{inputenc}
+% For best font rendering with XeLaTeX/LuaLaTeX
+\usepackage{fontspec}
+\usepackage{unicode-math}
 \usepackage{tikz}
 \usepackage{colortbl}
 \usepackage{amsmath}
@@ -15,7 +17,7 @@
 \usepackage{biblatex}
 
 % TikZ libraries
-\usetikzlibrary{arrows,automata,positioning,shapes,calc,decorations.pathmorphing,patterns}
+\usetikzlibrary{arrows,automata,positioning,shapes,calc,decorations.pathmorphing,patterns,math}
 
 % Beamer theme
 \usetheme{metropolis}
@@ -66,7 +68,7 @@
   \begin{block}{Definition}
     An algorithm that makes random choices during execution to influence its behavior or output.
   \end{block}
-  \pause
+
   \begin{itemize}
     \item Output or performance may vary on different runs
     \item Two main types: Las Vegas (always correct, time varies), Monte Carlo (time fixed, may err)
@@ -76,11 +78,11 @@
 \begin{frame}{Types of Probabilistic Algorithms}
   \begin{itemize}
     \item \textbf{Las Vegas:} Always correct, random running time
-          \pause
+
     \item \textbf{Monte Carlo:} Fixed running time, may give incorrect result with small probability
-          \pause
+
     \item \textbf{Example:} Randomized Quicksort (Las Vegas)
-          \pause
+
     \item \textbf{Example:} Primality testing (Monte Carlo)
   \end{itemize}
 \end{frame}
@@ -91,11 +93,11 @@
   \begin{block}{Motivation}
     \begin{itemize}
       \item Simpler algorithms
-            \pause
+
       \item Better expected performance
-            \pause
+
       \item Avoid worst-case scenarios
-            \pause
+
       \item Useful for large-scale and distributed systems
     \end{itemize}
   \end{block}
@@ -104,11 +106,11 @@
 \begin{frame}{Real-World Motivation}
   \begin{itemize}
     \item Web search (PageRank)
-          \pause
+
     \item Load balancing (power of two choices)
-          \pause
+
     \item Hashing (universal hash functions)
-          \pause
+
     \item Primality testing (Miller-Rabin)
   \end{itemize}
 \end{frame}
@@ -119,138 +121,63 @@
   \begin{block}{Key Idea}
     Use random choices to influence the algorithm's path or output.
   \end{block}
-  \pause
+
   \begin{itemize}
     \item Random pivot in Quicksort
-          \pause
+
     \item Random walks in graphs
-          \pause
+
     \item Random sampling
   \end{itemize}
 \end{frame}
 
 % Example: Randomized Quicksort
 \section{Example: Randomized Quicksort}
-\begin{frame}{Randomized Quicksort: Step 1 (Initial Array)}
-  Consider the array:
-  \[
-    \renewcommand{\arraystretch}{1.5}
-    \begin{array}{|c|c|c|c|c|c|c|c|}
-      \hline
-      7 & 5 & 9 & 1 & 3 & 4 & 8 & 6 \\
-      \hline
-    \end{array}
-  \]
-  \pause
-  Suppose the random pivot chosen is \textcolor{red}{5}:
-  \[
-    \renewcommand{\arraystretch}{1.5}
-    \begin{array}{|c|c|c|c|c|c|c|c|}
-      \hline
-      7 & \cellcolor{red!20}\textcolor{red}{5} & 9 & 1 & 3 & 4 & 8 & 6 \\
-      \hline
-    \end{array}
-  \]
+
+% New slide: QuickSort vs Randomized QuickSort steps
+\begin{frame}{QuickSort vs Randomized QuickSort}
+\textbf{QuickSort:}
+\begin{enumerate}
+  \item Pick a pivot element from the array
+  \item Split array into 3 subarrays: those smaller than pivot, those larger than pivot, and the pivot itself
+  \item Recursively sort the subarrays, and concatenate them
+\end{enumerate}
+  \vspace{1em}
+  \textbf{Randomized QuickSort:}
+  \begin{enumerate}
+    \item Pick a pivot element \textbf{uniformly at random} from the array
+    \item Split array into 3 subarrays: those smaller than pivot, those larger than pivot, and the pivot itself
+    \item Recursively sort the subarrays, and concatenate them
+  \end{enumerate}
+  \end{frame}
+
+% New slide: Worst-case for QuickSort
+\begin{frame}{Example: Randomized Quicksort}
+  \textbf{Recall:} QuickSort can take $\Omega(n^2)$ time to sort an array of size $n$.
 \end{frame}
 
-\begin{frame}{Randomized Quicksort: Step 2 (Partitioning)}
-  Partition the array into:
-  \begin{itemize}
-    \item \textcolor{green!60!black}{Left:} 1, 3, 4 (all $<$ 5)
-    \item \textcolor{red}{Middle:} 5 (pivot)
-    \item \textcolor{blue}{Right:} 7, 9, 8, 6 (all $>$ 5)
-  \end{itemize}
-  \pause
-  \[
-    \renewcommand{\arraystretch}{1.5}
-    \begin{array}{|c|c|c|c|c|c|c|c|}
-      \hline
-      \cellcolor{green!20}\textcolor{green!60!black}{1} & \cellcolor{green!20}\textcolor{green!60!black}{3} & \cellcolor{green!20}\textcolor{green!60!black}{4} & \cellcolor{red!20}\textcolor{red}{5} & \cellcolor{blue!20}\textcolor{blue}{7} & \cellcolor{blue!20}\textcolor{blue}{9} & \cellcolor{blue!20}\textcolor{blue}{8} & \cellcolor{blue!20}\textcolor{blue}{6} \\
-      \hline
-    \end{array}
-  \]
+% New slide: Theorem and expectation for Randomized QuickSort
+\begin{frame}{Randomized QuickSort: Expected Runtime}
+\textbf{Theorem}
+\begin{block}{}
+  Randomized QuickSort sorts a given array of length $n$ in $O(n \log n)$ expected time.
+\end{block}
+  \vspace{1em}
+  \textbf{Note:} On every input, randomized QuickSort takes $O(n \log n)$ time in expectation. On every input, it may take $\Omega(n^2)$ time with some small probability.
 \end{frame}
 
-\begin{frame}{Randomized Quicksort: Step 3 (Left Subarray)}
-  Recurse on the left subarray $[1, 3, 4]$.
-  \pause
-  Suppose the random pivot is \textcolor{red}{3}:
-  \[
-    \renewcommand{\arraystretch}{1.5}
-    \begin{array}{|c|c|c|}
-      \hline
-      \cellcolor{green!20}\textcolor{green!60!black}{1} & \cellcolor{red!20}\textcolor{red}{3} & \cellcolor{blue!20}\textcolor{blue}{4} \\
-      \hline
-    \end{array}
-  \]
-  \pause
-  Partition:
-  \begin{itemize}
-    \item \textcolor{green!60!black}{Left:} 1
-    \item \textcolor{red}{Middle:} 3
-    \item \textcolor{blue}{Right:} 4
-  \end{itemize}
-\end{frame}
+\input{../programs/quicksort/quicksort_steps.tex}
+\input{../programs/pi_calculation/pi_calculation_steps.tex}
 
-\begin{frame}{Randomized Quicksort: Step 4 (Right Subarray)}
-  Recurse on the right subarray $[7, 9, 8, 6]$.
-  \pause
-  Suppose the random pivot is \textcolor{red}{8}:
-  \[
-    \renewcommand{\arraystretch}{1.5}
-    \begin{array}{|c|c|c|c|}
-      \hline
-      \cellcolor{green!20}\textcolor{green!60!black}{7} & \cellcolor{red!20}\textcolor{red}{8} & \cellcolor{blue!20}\textcolor{blue}{9} & \cellcolor{green!20}\textcolor{green!60!black}{6} \\
-      \hline
-    \end{array}
-  \]
-  \pause
-  Partition:
-  \begin{itemize}
-    \item \textcolor{green!60!black}{Left:} 7, 6
-    \item \textcolor{red}{Middle:} 8
-    \item \textcolor{blue}{Right:} 9
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Randomized Quicksort: Step 5 (Continue Recursion)}
-  Continue recursively on each subarray until all are of length 1.
-  \pause
-  The final sorted array is:
-  \[
-    \renewcommand{\arraystretch}{1.5}
-    \begin{array}{|c|c|c|c|c|c|c|c|}
-      \hline
-      1 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
-      \hline
-    \end{array}
-  \]
-\end{frame}
-
-\begin{frame}[fragile]{Quicksort Implementation (Python)}
-  \begin{lstlisting}
-import random
-def quicksort(arr):
-    if len(arr) <= 1:
-        return arr
-    pivot = random.choice(arr)
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x > pivot]
-    return quicksort(left) + middle + quicksort(right)
-  \end{lstlisting}
-\end{frame}
-
-% Analysis: Recurrence and Expectation
 \section{Analysis: Recurrence and Expectation}
 \begin{frame}{Quicksort Recurrence}
   \begin{block}{Expected Comparisons}
     \[
       T(n) \leq n + \frac{1}{n} \sum_{i=1}^n (T(i-1) + T(n-i))
     \]
-    \pause
+
     Base case: $T(1) = 0$
-    \pause
+
     Solution: $T(n) = O(n \log n)$
   \end{block}
 \end{frame}
@@ -258,14 +185,14 @@ def quicksort(arr):
 \begin{frame}{Slick Analysis: Indicator Variables}
   \begin{itemize}
     \item $Q(A)$: Number of comparisons on input $A$
-          \pause
+
     \item $X_{ij}$: Indicator for whether elements $i$ and $j$ are compared
-          \pause
+
     \item $E[Q(A)] = \sum_{i<j} Pr[R_{ij}]$
-          \pause
+
     \item $Pr[R_{ij}] = \frac{2}{j-i+1}$
   \end{itemize}
-  \pause
+
   \begin{block}{Visualization}
     \begin{center}
       % Insert comparison probability diagram here
@@ -292,7 +219,7 @@ def quicksort(arr):
   \begin{block}{Harmonic Number}
     $H_n = \sum_{i=1}^n \frac{1}{i} = \Theta(\log n)$
   \end{block}
-  \pause
+
   \begin{block}{Summation in Quicksort}
     $E[Q(A)] \leq 2nH_n = O(n \log n)$
   \end{block}
@@ -304,11 +231,11 @@ def quicksort(arr):
   \begin{block}{Experiment}
     John tosses a biased coin (probability $p$ of heads) to decide whether to wear a tie. If heads, tosses a fair coin to pick red or blue tie.
   \end{block}
-  \pause
+
   \begin{block}{Question}
     What is the probability John wears a red tie on the first day he wears a tie?
   \end{block}
-  \pause
+
   \begin{center}
     % Insert coin toss diagram here
     \begin{tikzpicture}[level distance=1.5cm,
@@ -329,11 +256,11 @@ def quicksort(arr):
 \begin{frame}{Where do Random Bits Come From?}
   \begin{itemize}
     \item Hardware random number generators
-          \pause
+
     \item Pseudo-random number generators (PRNGs)
-          \pause
+
     \item Physical phenomena (thermal noise, radioactive decay)
-          \pause
+
     \item In practice, PRNGs are sufficient for most applications
   \end{itemize}
 \end{frame}
@@ -345,7 +272,7 @@ def quicksort(arr):
   \begin{block}{Definition}
     Data structures that use randomization or probabilistic techniques to achieve space or time efficiency, often allowing for small errors (e.g., false positives).
   \end{block}
-  \pause
+
   \begin{itemize}
     \item Useful for large-scale data, streaming, or approximate answers
     \item Examples: Bloom filter, Count-Min Sketch, HyperLogLog
@@ -356,7 +283,7 @@ def quicksort(arr):
   \begin{block}{What is a Bloom Filter?}
     A space-efficient, probabilistic data structure for set membership queries.
   \end{block}
-  \pause
+
   \begin{itemize}
     \item Answers: "Is $x$ in the set?"
     \item May return false positives, but never false negatives
@@ -367,18 +294,18 @@ def quicksort(arr):
 \begin{frame}{How Does a Bloom Filter Work?}
   \begin{enumerate}
     \item Start with a bit array of $m$ bits, all set to 0
-          \pause
+
     \item Use $k$ independent hash functions
-          \pause
+
     \item To add an element, set $k$ bits (one per hash) to 1
-          \pause
+
     \item To check membership, test if all $k$ bits are 1
   \end{enumerate}
 \end{frame}
 
 \begin{frame}{Bloom Filter Example}
   Suppose $m=8$ bits, $k=2$ hash functions, and we insert $\{\text{cat}, \text{dog}\}$.
-  \pause
+
   \begin{block}{Bit Array After Insertion}
     \[
       \begin{array}{|c|c|c|c|c|c|c|c|}
@@ -388,7 +315,7 @@ def quicksort(arr):
       \end{array}
     \]
   \end{block}
-  \pause
+
   \begin{itemize}
     \item To check if "cat" is in the set, hash and check the corresponding bits
     \item If all are 1, answer is "possibly in set"; if any is 0, "definitely not in set"
@@ -398,11 +325,11 @@ def quicksort(arr):
 \begin{frame}{Bloom Filter: Trade-offs}
   \begin{itemize}
     \item \textbf{False positives:} May say "in set" when not
-          \pause
+
     \item \textbf{No false negatives:} Never says "not in set" if it is
-          \pause
+
     \item \textbf{Space efficient:} Much smaller than explicit set
-          \pause
+
     \item \textbf{No deletions:} Standard Bloom filters do not support removing elements
   \end{itemize}
 \end{frame}

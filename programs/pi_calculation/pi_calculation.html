@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pi Calculation with p5.js</title>
+  <script src="./p5.min.js"></script>
+  <script src="./tailwind.min.js"></script>
+</head>
+
+<body class="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4 font-sans">
+  <h1 class="text-2xl font-bold text-gray-800 mb-4">
+    Pi Calculation with Monte Carlo Method
+  </h1>
+  <div id="canvas-container" class="mb-6 bg-white rounded-0 shadow-none"></div>
+
+  <div class="flex items-center gap-4 mb-6">
+    <button id="reset-btn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors">
+      Reset
+    </button>
+    <button id="pause-btn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg transition-colors">
+      Pause
+    </button>
+    <div class="flex items-center">
+      <label for="speed-slider" class="mr-2 text-gray-700">Speed:</label>
+      <input type="range" id="speed-slider" min="1" max="100" value="50" class="w-40" />
+    </div>
+  </div>
+
+  <div class="flex justify-between w-full max-w-2xl mb-6">
+    <div class="bg-white rounded-lg shadow p-4 text-center flex-1 mx-2">
+      <h3 class="text-sm font-semibold text-gray-600">Points Inside</h3>
+      <div id="inside-count" class="text-xl font-bold text-green-600">0</div>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 text-center flex-1 mx-2">
+      <h3 class="text-sm font-semibold text-gray-600">Total Points</h3>
+      <div id="total-count" class="text-xl font-bold text-blue-600">0</div>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 text-center flex-1 mx-2">
+      <h3 class="text-sm font-semibold text-gray-600">Calculated π</h3>
+      <div id="pi-value" class="text-xl font-bold text-purple-600">0</div>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 text-center flex-1 mx-2">
+      <h3 class="text-sm font-semibold text-gray-600">Accuracy</h3>
+      <div id="accuracy" class="text-xl font-bold text-indigo-600">0%</div>
+    </div>
+  </div>
+
+  <script>
+    let totalPoints = 0;
+    let pointsInside = 0;
+              let size = 400;
+    let radius = size;
+    let running = true;
+    let pointsPerFrame = 300;
+    let canvas;
+
+    function setup() {
+      canvas = createCanvas(size, size);
+      canvas.parent("canvas-container");
+      resetSimulation();
+
+      // Setup buttons
+      document
+        .getElementById("reset-btn")
+        .addEventListener("click", resetSimulation);
+      document
+        .getElementById("pause-btn")
+        .addEventListener("click", togglePause);
+      document
+        .getElementById("speed-slider")
+        .addEventListener("input", updateSpeed);
+    }
+
+    function draw() {
+      if (!running) return;
+
+      // Draw points without storing them
+      for (let i = 0; i < pointsPerFrame; i++) {
+        const x = random(size);
+        const y = random(size);
+        totalPoints++;
+
+        if (x * x + y * y <= radius * radius) {
+          pointsInside++;
+          stroke(70, 180, 70, 150);
+        } else {
+          stroke(220, 70, 70, 150);
+        }
+
+        strokeWeight(1);
+        point(x, y);
+      }
+
+      updateStats();
+    }
+
+    function drawQuadrant() {
+      stroke(70, 130, 230);
+      strokeWeight(2);
+      noFill();
+
+      // Draw dotted arc
+      const segments = 40;
+      const angleIncrement = HALF_PI / segments;
+      for (let i = 0; i < segments; i++) {
+        const startAngle = i * angleIncrement;
+        const endAngle = startAngle + angleIncrement / 2;
+        arc(0, 0, 2 * radius, 2 * radius, startAngle, endAngle);
+      }
+
+      stroke(100);
+      strokeWeight(0.75);
+      line(0, 0, size, 0);
+      line(0, 0, 0, size);
+
+      stroke(200);
+      noFill();
+      rect(0, 0, size, size);
+    }
+
+    function updateStats() {
+      const calculatedPi =
+        pointsInside > 0 ? (4 * pointsInside) / totalPoints : 0;
+      const accuracy = Math.abs(
+        100 - (Math.abs(calculatedPi - Math.PI) / Math.PI) * 100
+      );
+
+      document.getElementById("inside-count").textContent = pointsInside;
+      document.getElementById("total-count").textContent = totalPoints;
+      document.getElementById("pi-value").textContent =
+        calculatedPi.toFixed(6);
+      document.getElementById("accuracy").textContent =
+        accuracy.toFixed(2) + "%";
+    }
+
+    function resetSimulation() {
+      background(240);
+      drawQuadrant();
+      totalPoints = 0;
+      pointsInside = 0;
+      updateStats();
+    }
+
+    function togglePause() {
+      running = !running;
+      document.getElementById("pause-btn").textContent = running
+        ? "Pause"
+        : "Resume";
+    }
+
+    function updateSpeed() {
+      pointsPerFrame = parseInt(
+        document.getElementById("speed-slider").value
+      );
+    }
+  </script>
+</body>
+
+</html>
