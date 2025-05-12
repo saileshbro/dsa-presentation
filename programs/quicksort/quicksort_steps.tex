@@ -1,6 +1,5 @@
-% --- UPDATED RANDOMIZED QUICKSORT EXAMPLE (NEW TRACE) ---
-
 % Step 1: Initial Array (before pivot)
+\subsection{Step-by-Step Execution}
 \begin{frame}{Randomized Quicksort: Step 1 (Initial Array)}
   % Use columns for top-aligned split layout
   \begin{columns}[t]
@@ -17,7 +16,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Randomized Quicksort: Step 1 (Initial Array, Pivot Chosen)}
+\begin{frame}{Randomized Quicksort: Step 1.1 (Pivot Chosen)}
   % Use columns for top-aligned split layout
   \begin{columns}[t]
     \column{0.6\textwidth}
@@ -30,11 +29,20 @@
         \hline
       \end{array}
     \]
+    \pause
     \column{0.38\textwidth}
     \begin{minipage}[t]{\linewidth}
       \vspace{0pt}
       \begin{center}
-        \begin{tikzpicture}[level distance=1.5cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
             10
@@ -45,7 +53,7 @@
   \end{columns}
 \end{frame}
 % Step 2: Partitioning around 10
-\begin{frame}{Randomized Quicksort: Step 2 (Partitioning)}
+\begin{frame}{Randomized Quicksort: Step 2 (Partitioning Around Pivot 10)}
   % Use columns for top-aligned split layout
   \begin{columns}[t]
     \column{0.6\textwidth}
@@ -55,6 +63,7 @@
       \item \textcolor{red}{Middle:} 10 (pivot)
       \item \textcolor{blue}{Right:} 15 (element after pivot position)
     \end{itemize}
+    \pause
     After partitioning:
     \[
       \renewcommand{\arraystretch}{1.5}
@@ -64,11 +73,20 @@
         \hline
       \end{array}
     \]
+    \pause
     \column{0.38\textwidth}
     \begin{minipage}[t]{\linewidth}
       \vspace{0pt}
       \begin{center}
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -88,8 +106,8 @@
   \end{columns}
 \end{frame}
 
-% Step 3: Recurse to Left Subarray
-\begin{frame}[t]{Randomized Quicksort: Step 3 (Recurse to Left Subarray)}
+% Step 3: Recurse Left [A[0,5]], Pivot 4
+\begin{frame}{Randomized Quicksort: Step 3 (Recurse Left [A[0,5]], Pivot 4)}
   % Use columns for top-aligned split layout
   \begin{columns}[t]
     \column{0.6\textwidth}
@@ -104,11 +122,20 @@
         \hline
       \end{array}
     \]
+    \pause
     \column{0.38\textwidth}
     \begin{minipage}[t]{\linewidth}
       \vspace{0pt}
       \begin{center}
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -129,8 +156,8 @@
   \end{columns}
 \end{frame}
 
-% Step 3: Left Subarray [4, 3, 1, 9, 0, 6] (after pivot)
-\begin{frame}[t]{Randomized Quicksort: Step 3 (Left Subarray Partitioning)}
+% Step 3.1: Partition Left [A[0,5]] Around 4
+\begin{frame}{Randomized Quicksort: Step 3.1 (Partition Left [A[0,5]] Around 4)}
   % Use columns for top-aligned split layout
   \begin{columns}[t]
     \column{0.6\textwidth}
@@ -149,11 +176,20 @@
       \item \textcolor{red}{Middle:} 4 (pivot)
       \item \textcolor{blue}{Right:} 9, 6 (elements after pivot)
     \end{itemize}
+    \pause
     \column{0.38\textwidth}
     \begin{minipage}[t]{\linewidth}
       \vspace{0pt}
       \begin{center}
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -182,7 +218,9 @@
     \end{minipage}
   \end{columns}
 \end{frame}
-\begin{frame}[t]{Randomized Quicksort: Step 3 (Recurse to Left Subarray)}
+
+% Step 3.1.1: Recurse Left [A[0,2]], Pivot 0
+\begin{frame}{Randomized Quicksort: Step 3.1.1 (Recurse Left [A[0,2]], Pivot 0)}
   % Use columns for top-aligned split layout
   \begin{columns}[t]
     \column{0.6\textwidth}
@@ -197,11 +235,20 @@
         \hline
       \end{array}
     \]
+    \pause
     \column{0.38\textwidth}
     \begin{minipage}[t]{\linewidth}
       \vspace{0pt}
       \begin{center}
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -233,8 +280,8 @@
   \end{columns}
 \end{frame}
 
-% Step 3: Left Subarray [4, 3, 1, 9, 0, 6] (after pivot)
-\begin{frame}[t]{Randomized Quicksort: Step 3 (Left Subarray Partitioning)}
+% Step 3.1.1.1: Partition Left [A[0,2]] Around 0
+\begin{frame}{Randomized Quicksort: Step 3.1.1.1 (Partition Left [A[0,2]] Around 0)}
   % Use columns for top-aligned split layout
   \begin{columns}[t]
     \column{0.6\textwidth}
@@ -253,11 +300,20 @@
       \item \textcolor{red}{Middle:} 0 (pivot)
       \item \textcolor{blue}{Right:} 3, 1 (elements after pivot)
     \end{itemize}
+    \pause
     \column{0.38\textwidth}
     \begin{minipage}[t]{\linewidth}
       \vspace{0pt}
       \begin{center}
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -296,7 +352,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}[t]{Randomized Quicksort: Step 3a1 (Right of 0 Subarray)}
+\begin{frame}{Randomized Quicksort: Step 3.1.1.2 (Recurse Right [A[1,2]], Pivot 3)}
   % Use columns for top-aligned split layout
   \begin{columns}[t]
     \column{0.6\textwidth}
@@ -311,11 +367,20 @@
         \hline
       \end{array}
     \]
+    \pause
     \column{0.38\textwidth}
     \begin{minipage}[t]{\linewidth}
       \vspace{0pt}
       \begin{center}
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -356,12 +421,12 @@
   \end{columns}
 \end{frame}
 
-% Step 3: Left Subarray [4, 3, 1, 9, 0, 6] (after pivot)
-\begin{frame}[t]{Randomized Quicksort: Step 3 (Left Subarray Partitioning)}
+% Step 3.1.1.2.1: Partition [A[1,2]] Around 3
+\begin{frame}{Randomized Quicksort: Step 3.1.1.2.1 (Partition [A[1,2]] Around 3)}
   % Use columns for top-aligned split layout
   \begin{columns}[t]
     \column{0.6\textwidth}
-    After partitioning the right subarray:
+    After partitioning the left subarray:
     \[
       \renewcommand{\arraystretch}{1.5}
       \begin{array}{|c|c|c|}
@@ -376,12 +441,21 @@
       \item \textcolor{red}{Middle:} 3 (pivot)
       \item \textcolor{blue}{Right:} (empty)
     \end{itemize}
+    \pause
     \column{0.38\textwidth}
     \begin{minipage}[t]{\linewidth}
       \vspace{0pt} % Ensures true top alignment
       \begin{center}
 
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -404,7 +478,7 @@
                           \textbf{A[1,2]}\\
                           3
                         }
-                      child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
+                      child {node[circle, draw, fill=blue!20, minimum size=1cm, align=center] {
                               \textbf{A[1,1]}
                             }
                         }
@@ -429,9 +503,8 @@
   \end{columns}
 \end{frame}
 
-
-% Step 3a1b: Rightmost [] (done)
-\begin{frame}[t]{Randomized Quicksort: Step 3 (Left Subarray)}
+% Step 3.1.1.2.1.1: Recurse Left [A[1,1]], Done
+\begin{frame}{Randomized Quicksort: Step 3.1.1.2.1.1 (Recurse Left [A[1,1]], Done)}
   \begin{columns}[t]
     \column{0.6\textwidth}
     After partitioning the left subarray:
@@ -456,7 +529,15 @@
       \vspace{0pt} % Ensures true top alignment
       \begin{center}
 
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -480,68 +561,7 @@
                           3
                         }
                       child {node[circle, draw, fill=blue!20, minimum size=1cm, align=center] {
-                              \textbf{A[1,1]}\\
-                              1
-                            }
-                        }
-                      child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
-                              \textbf{A[3,2]}
-                            }
-                        }
-                    }
-                }
-              child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
-                      \textbf{A[4,5]}
-                    }}
-            }
-          % Right child
-          child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
-                  \textbf{A[7,7]}
-                }
-            };
-        \end{tikzpicture}
-      \end{center}
-    \end{minipage}
-  \end{columns}
-\end{frame}
-
-% Step 3a2: Right of 3 [] (done)
-\begin{frame}{Randomized Quicksort: Step 3a2 (Right of 3 Subarray)}
-  \begin{columns}[t]
-    \column{0.6\textwidth}
-    Recurse on the right subarray $A[3,2]$ (empty, done).
-    Return to parent call $A[1,2]$
-    \column{0.38\textwidth}
-    \begin{minipage}[t]{\linewidth}
-      \vspace{0pt} % Ensures true top alignment
-      \begin{center}
-
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
-          % Root node
-          \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
-            \textbf{A[0,7]} \\
-            10
-          }
-          % Left child
-          child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
-                  \textbf{A[0,5]} \\
-                  4
-                }
-              % New children for this step
-              child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
-                      \textbf{A[0,2]}\\
-                      0
-                    }
-                  child {node[circle, draw, fill=red!40, minimum size=1cm, align=center] {
-                          \textbf{A[0,-1]}
-                        }}
-                  child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
-                          \textbf{A[1,2]}\\
-                          3
-                        }
-                      child {node[circle, draw, fill=blue!20, minimum size=1cm, align=center] {
-                              \textbf{A[1,1]}\\
-                              1
+                              \textbf{A[1,1]}
                             }
                         }
                       child {node[circle, draw, fill=red!40, minimum size=1cm, align=center] {
@@ -564,7 +584,76 @@
     \end{minipage}
   \end{columns}
 \end{frame}
-\begin{frame}{Randomized Quicksort: Step 3a2 (Right of 3 Subarray)}
+
+% Step 3.1.1.2.1.2: Recurse Right [A[3,2]], Done
+\begin{frame}{Randomized Quicksort: Step 3.1.1.2.1.2 (Recurse Right [A[3,2]], Done)}
+  \begin{columns}[t]
+    \column{0.6\textwidth}
+    Recurse on the right subarray $A[3,2]$ (empty, done).
+    Return to parent call $A[1,2]$
+    \column{0.38\textwidth}
+    \begin{minipage}[t]{\linewidth}
+      \vspace{0pt} % Ensures true top alignment
+      \begin{center}
+
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
+          % Root node
+          \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
+            \textbf{A[0,7]} \\
+            10
+          }
+          % Left child
+          child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
+                  \textbf{A[0,5]} \\
+                  4
+                }
+              % New children for this step
+              child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
+                      \textbf{A[0,2]}\\
+                      0
+                    }
+                  child {node[circle, draw, fill=red!40, minimum size=1cm, align=center] {
+                          \textbf{A[0,-1]}
+                        }}
+                  child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
+                          \textbf{A[1,2]}\\
+                          3
+                        }
+                      child {node[circle, draw, fill=blue!20, minimum size=1cm, align=center] {
+                              \textbf{A[1,1]}
+                            }
+                        }
+                      child {node[circle, draw, fill=red!40, minimum size=1cm, align=center] {
+                              \textbf{A[3,2]}
+                            }
+                        }
+                    }
+                }
+              child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
+                      \textbf{A[4,5]}
+                    }}
+            }
+          % Right child
+          child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
+                  \textbf{A[7,7]}
+                }
+            };
+        \end{tikzpicture}
+      \end{center}
+    \end{minipage}
+  \end{columns}
+\end{frame}
+
+% Step 3.1.2: Return to [A[0,2]]
+\begin{frame}{Randomized Quicksort: Step 3.1.2 (Return to [A[0,2]])}
   \begin{columns}[t]
     \column{0.6\textwidth}
     Return to parent call $A[0,2]$
@@ -573,7 +662,15 @@
       \vspace{0pt} % Ensures true top alignment
       \begin{center}
 
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -621,9 +718,10 @@
     \end{minipage}
   \end{columns}
 \end{frame}
-\begin{frame}{Randomized Quicksort: Step 3a2 (Right of 3 Subarray)}
+
+% Step 3.2: Recurse Right [A[4,5]], Pivot 9
+\begin{frame}{Randomized Quicksort: Step 3.2 (Recurse Right [A[4,5]], Pivot 9)}
   \begin{columns}[t]
-    % Use columns for top-aligned split layout
     \column{0.6\textwidth}
     Recurse on the right subarray $A[4,5]$:
     \\[0.5em]
@@ -636,12 +734,21 @@
         \hline
       \end{array}
     \]
+    \pause
     \column{0.38\textwidth}
     \begin{minipage}[t]{\linewidth}
       \vspace{0pt} % Ensures true top alignment
       \begin{center}
 
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -678,7 +785,14 @@
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[4,5]}\\
                       9
+                    }
+                    child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
+                    \textbf{A[4,4]}
+                        }}
+                  child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
+                      \textbf{A[6,5]}
                     }}
+                  }
             }
           % Right child
           child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
@@ -690,12 +804,10 @@
     \end{minipage}
   \end{columns}
 \end{frame}
-% Step 3b: Right of 4 [9, 6], pivot 9
-\begin{frame}{Randomized Quicksort: Step 3b (Right of 4 Subarray)}
 
-
+% Step 3.2.1: Partition [A[4,5]] Around 9
+\begin{frame}{Randomized Quicksort: Step 3.2.1 (Partition [A[4,5]] Around 9)}
   \begin{columns}[t]
-    % Use columns for top-aligned split layout
     \column{0.6\textwidth}
     Recurse on the right subarray $A[4,5]$:
     \\[0.5em]
@@ -716,12 +828,21 @@
       \item \textcolor{red}{Middle:} 9 (pivot)
       \item \textcolor{blue}{Right:} (empty)
     \end{itemize}
+    \pause
     \column{0.38\textwidth}
     \begin{minipage}[t]{\linewidth}
       \vspace{0pt} % Ensures true top alignment
       \begin{center}
 
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -778,8 +899,8 @@
   \end{columns}
 \end{frame}
 
-% Step 3b1: Leftmost [6] (done)
-\begin{frame}{Randomized Quicksort: Step 3b1 (Leftmost Subarray)}
+% Step 3.2.1.1: Recurse Left [A[4,4]], Done
+\begin{frame}{Randomized Quicksort: Step 3.2.1.1 (Recurse Left [A[4,4]], Done)}
   \begin{columns}[t]
     \column{0.6\textwidth}
     After partitioning the left subarray:
@@ -804,7 +925,15 @@
       \vspace{0pt} % Ensures true top alignment
       \begin{center}
 
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -839,16 +968,8 @@
                     }
                 }
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
-                      \textbf{A[4,5]}\\
-                      9
-                    }
-                  child {node[circle, draw, fill=blue!20, minimum size=1cm, align=center] {
-                          \textbf{A[4,4]}
-                        }}
-                  child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
-                          \textbf{A[6,5]}
-                        }}
-                }
+                      \textbf{A[4,5]}
+                      }}
             }
           % Right child
           child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
@@ -861,7 +982,8 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Randomized Quicksort: Step 3b1 (Leftmost Subarray)}
+% Step 3.2.1.2: Recurse Right [A[6,5]], Done
+\begin{frame}{Randomized Quicksort: Step 3.2.1.2 (Recurse Right [A[6,5]], Done)}
   \begin{columns}[t]
     \column{0.6\textwidth}
     Recurse on the right subarray $A[6,5]$ (empty, done).
@@ -872,7 +994,15 @@
       \vspace{0pt} % Ensures true top alignment
       \begin{center}
 
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -928,7 +1058,9 @@
     \end{minipage}
   \end{columns}
 \end{frame}
-\begin{frame}{Randomized Quicksort: Step 3b1 (Leftmost Subarray)}
+
+% Step 3.3: Recurse Right [A[7,7]], Done
+\begin{frame}{Randomized Quicksort: Step 3.3 (Recurse Right [A[7,7]], Done)}
   \begin{columns}[t]
     \column{0.6\textwidth}
     Recurse on the right subarray $A[7,7]$
@@ -954,7 +1086,15 @@
       \vspace{0pt} % Ensures true top alignment
       \begin{center}
 
-        \begin{tikzpicture}[level distance=1.5cm, sibling distance=2.2cm, every node/.style={font=\tiny}]
+        \begin{tikzpicture}[
+          scale=0.85,
+          transform shape,
+          level distance=1.5cm,
+          level 1/.style={sibling distance=3.0cm},
+          level 2/.style={sibling distance=2.0cm},
+          level 3/.style={sibling distance=1.2cm},
+          every node/.style={font=\tiny}
+        ]
           % Root node
           \node[circle, draw, fill=green!20, minimum size=1cm, align=center] (root) {
             \textbf{A[0,7]} \\
@@ -1012,9 +1152,8 @@
   \end{columns}
 \end{frame}
 
-
-% Step 5: Final sorted array
-\begin{frame}{Randomized Quicksort: Final Sorted Array}
+% Step 4: Final Sorted Array
+\begin{frame}{Randomized Quicksort: Step 4 (Final Sorted Array)}
   The final sorted array is:
   \[
     \renewcommand{\arraystretch}{1.5}

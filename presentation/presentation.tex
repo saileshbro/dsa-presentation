@@ -46,6 +46,7 @@
     showstringspaces=false
 }
 
+
 \begin{document}
 
 \begin{frame}
@@ -68,22 +69,124 @@
   \begin{block}{Definition}
     An algorithm that makes random choices during execution to influence its behavior or output.
   \end{block}
+\end{frame}
 
-  \begin{itemize}
-    \item Output or performance may vary on different runs
-    \item Two main types: Las Vegas (always correct, time varies), Monte Carlo (time fixed, may err)
-  \end{itemize}
+% Combined Visual: Deterministic vs Probabilistic Algorithm
+\begin{frame}{Deterministic vs Probabilistic Algorithm}
+  % Deterministic Algorithm (top)
+  \begin{center}
+    \begin{tikzpicture}
+      % Box
+      \node[draw, fill=yellow!80, minimum width=4cm, minimum height=1.5cm] (box) {\footnotesize Deterministic Algorithm};
+      % Input arrow
+      \node[left=1.5cm of box, align=center] (input) {\footnotesize Input $x$};
+      \draw[->, thick] (input) -- (box);
+      % Output arrow
+      \node[right=1.5cm of box, align=center] (output) {\footnotesize Output $y$};
+      \draw[->, thick] (box) -- (output);
+    \end{tikzpicture}
+    \\[0.2em]
+    {\footnotesize Deterministic}
+  \end{center}
+  \pause
+  \vspace{1.5em}
+  % Probabilistic Algorithm (bottom)
+  \begin{center}
+    \begin{tikzpicture}
+      % Box
+      \node[draw, fill=gray!30, minimum width=4cm, minimum height=1.5cm] (box) {\footnotesize Randomized Algorithm};
+      % Input arrow
+      \node[left=1.5cm of box, align=center] (input) {\footnotesize Input $x$};
+      \draw[->, thick] (input) -- (box);
+      % Output arrow
+      \node[right=1.5cm of box, align=center] (output) {\footnotesize Output $y_r$};
+      \draw[->, thick] (box) -- (output);
+      % Random bits arrow
+      \node[above=0.8cm of box, align=center] (rand) {\footnotesize random bits $r$};
+      \draw[->, thick] (rand) -- (box);
+    \end{tikzpicture}
+    \\[0.2em]
+    {\footnotesize Probabilistic}
+  \end{center}
 \end{frame}
 
 \begin{frame}{Types of Probabilistic Algorithms}
   \begin{itemize}
-    \item \textbf{Las Vegas:} Always correct, random running time
+    \item Las Vegas Algorithms
+    \item Monte Carlo Algorithms
+  \end{itemize}
+\end{frame}
+% Expanded: Las Vegas Algorithms
 
-    \item \textbf{Monte Carlo:} Fixed running time, may give incorrect result with small probability
+\begin{frame}{Las Vegas Algorithms}
+\begin{block}{Definition}
+  Always produce a correct result, but the running time is a random variable (depends on random choices).
+\end{block}
+\pause
+\begin{itemize}
+\item Output is always correct (no error), but time may vary between runs.
+\pause
+\item Useful when correctness is critical, but we can tolerate variable performance.
+\pause
+\item \textbf{Example:} Randomized Quicksort
+\begin{itemize}
+  \item Randomly selects a pivot to avoid worst-case input.
+  \item Always sorts correctly, but running time depends on random choices.
+\end{itemize}
+\pause
+\item \textbf{Other Examples:}
+\begin{itemize}
+  \item Randomized algorithms for minimum cut in graphs (Karger's algorithm)
+\end{itemize}
+\pause
+\item \textbf{Practical Usage in Software:}
+\begin{itemize}
+            \item Randomized Quicksort is widely used in standard libraries (e.g., C++ STL, Java, Python) for efficient sorting, especially to avoid worst-case performance on adversarial inputs.
+            \item Karger's algorithm is used in network reliability analysis tools.
+            \end{itemize}
+            \end{itemize}
+            \end{frame}
 
-    \item \textbf{Example:} Randomized Quicksort (Las Vegas)
+% Expanded: Monte Carlo Algorithms
+\begin{frame}{Monte Carlo Algorithms}
+\begin{block}{Definition}
+  Always finish in a fixed amount of time, but may produce an incorrect result with a small probability.
+\end{block}
+\pause
+\begin{itemize}
+\item Running time is predictable (usually polynomial), but there is a chance of error.
+\pause
+\item Useful when speed is more important than absolute certainty, and errors are rare or can be tolerated.
+\pause
+\item \textbf{Example:} Primality Testing (Miller-Rabin)
+\begin{itemize}
+  \item Quickly determines if a number is prime, but may err with small probability.
+  \item Error probability can be reduced by repeating the test.
+\end{itemize}
+\pause
+\item \textbf{Other Examples:}
+\begin{itemize}
+  \item Monte Carlo integration (estimating $\pi$)
+  \item Randomized algorithms for approximate counting
+\end{itemize}
+\pause
+\item \textbf{Practical Usage in Software:}
+\begin{itemize}
+  \item Miller-Rabin primality test is used in cryptographic libraries (e.g., OpenSSL, GnuPG) for generating large prime numbers.
+  \item Monte Carlo integration is used in computer graphics (e.g., rendering engines for global illumination), and in financial modeling for risk analysis.
+\end{itemize}
+  \end{itemize}
+\end{frame}
 
-    \item \textbf{Example:} Primality testing (Monte Carlo)
+% New section for applications
+\section{Applications of Probabilistic Algorithms}
+
+\begin{frame}{Real-World Motivation}
+  \begin{itemize}
+    \item Web search (PageRank)
+    \item Load balancing (power of two choices)
+    \item Hashing (universal hash functions)
+    \item Primality testing (Miller-Rabin)
   \end{itemize}
 \end{frame}
 
@@ -101,18 +204,6 @@
       \item Useful for large-scale and distributed systems
     \end{itemize}
   \end{block}
-\end{frame}
-
-\begin{frame}{Real-World Motivation}
-  \begin{itemize}
-    \item Web search (PageRank)
-
-    \item Load balancing (power of two choices)
-
-    \item Hashing (universal hash functions)
-
-    \item Primality testing (Miller-Rabin)
-  \end{itemize}
 \end{frame}
 
 % How do Probabilistic Algorithms work?
@@ -136,12 +227,12 @@
 
 % New slide: QuickSort vs Randomized QuickSort steps
 \begin{frame}{QuickSort vs Randomized QuickSort}
-\textbf{QuickSort:}
-\begin{enumerate}
-  \item Pick a pivot element from the array
-  \item Split array into 3 subarrays: those smaller than pivot, those larger than pivot, and the pivot itself
-  \item Recursively sort the subarrays, and concatenate them
-\end{enumerate}
+  \textbf{QuickSort:}
+  \begin{enumerate}
+    \item Pick a pivot element from the array
+    \item Split array into 3 subarrays: those smaller than pivot, those larger than pivot, and the pivot itself
+    \item Recursively sort the subarrays, and concatenate them
+  \end{enumerate}
   \vspace{1em}
   \textbf{Randomized QuickSort:}
   \begin{enumerate}
@@ -149,7 +240,7 @@
     \item Split array into 3 subarrays: those smaller than pivot, those larger than pivot, and the pivot itself
     \item Recursively sort the subarrays, and concatenate them
   \end{enumerate}
-  \end{frame}
+\end{frame}
 
 % New slide: Worst-case for QuickSort
 \begin{frame}{Example: Randomized Quicksort}
@@ -158,181 +249,24 @@
 
 % New slide: Theorem and expectation for Randomized QuickSort
 \begin{frame}{Randomized QuickSort: Expected Runtime}
-\textbf{Theorem}
-\begin{block}{}
-  Randomized QuickSort sorts a given array of length $n$ in $O(n \log n)$ expected time.
-\end{block}
+  \textbf{Theorem}
+  \begin{block}{}
+    Randomized QuickSort sorts a given array of length $n$ in $O(n \log n)$ expected time.
+  \end{block}
   \vspace{1em}
   \textbf{Note:} On every input, randomized QuickSort takes $O(n \log n)$ time in expectation. On every input, it may take $\Omega(n^2)$ time with some small probability.
 \end{frame}
 
 \input{../programs/quicksort/quicksort_steps.tex}
+
+\input{../programs/analysis_quicksort/analysis_quicksort_steps.tex}
+
 \input{../programs/pi_calculation/pi_calculation_steps.tex}
 
-\section{Analysis: Recurrence and Expectation}
-\begin{frame}{Quicksort Recurrence}
-  \begin{block}{Expected Comparisons}
-    \[
-      T(n) \leq n + \frac{1}{n} \sum_{i=1}^n (T(i-1) + T(n-i))
-    \]
+\input{../programs/bloom_filters/bloom_filters_steps.tex}
 
-    Base case: $T(1) = 0$
+% Visual: Deterministic Algorithm
 
-    Solution: $T(n) = O(n \log n)$
-  \end{block}
-\end{frame}
-
-\begin{frame}{Slick Analysis: Indicator Variables}
-  \begin{itemize}
-    \item $Q(A)$: Number of comparisons on input $A$
-
-    \item $X_{ij}$: Indicator for whether elements $i$ and $j$ are compared
-
-    \item $E[Q(A)] = \sum_{i<j} Pr[R_{ij}]$
-
-    \item $Pr[R_{ij}] = \frac{2}{j-i+1}$
-  \end{itemize}
-
-  \begin{block}{Visualization}
-    \begin{center}
-      % Insert comparison probability diagram here
-      \begin{tikzpicture}[scale=1, every node/.style={scale=1}]
-        % Draw array boxes
-        \foreach \i in {1,...,8} {
-            \draw (\i,0) rectangle (\i+1,1);
-            \node at (\i+0.5,0.5) {\i};
-          }
-        % Highlight i and j
-        \fill[green!20] (2,0) rectangle (3,1);
-        \fill[blue!20] (7,0) rectangle (8,1);
-        \node at (2.5,0.5) {$i$};
-        \node at (7.5,0.5) {$j$};
-        % Draw arc between i and j
-        \draw[thick,red,->] (2.5,1) .. controls (4.5,2.5) and (6.5,2.5) .. (7.5,1);
-        \node[red] at (5,2.7) {Probability $2/(j-i+1)$};
-      \end{tikzpicture}
-    \end{center}
-  \end{block}
-\end{frame}
-
-\begin{frame}{Harmonic Numbers in Analysis}
-  \begin{block}{Harmonic Number}
-    $H_n = \sum_{i=1}^n \frac{1}{i} = \Theta(\log n)$
-  \end{block}
-
-  \begin{block}{Summation in Quicksort}
-    $E[Q(A)] \leq 2nH_n = O(n \log n)$
-  \end{block}
-\end{frame}
-
-% Example: Coin Toss Probability
-\section{Example: Coin Toss Probability}
-\begin{frame}{Coin Toss Example}
-  \begin{block}{Experiment}
-    John tosses a biased coin (probability $p$ of heads) to decide whether to wear a tie. If heads, tosses a fair coin to pick red or blue tie.
-  \end{block}
-
-  \begin{block}{Question}
-    What is the probability John wears a red tie on the first day he wears a tie?
-  \end{block}
-
-  \begin{center}
-    % Insert coin toss diagram here
-    \begin{tikzpicture}[level distance=1.5cm,
-        level 1/.style={sibling distance=3cm},
-        level 2/.style={sibling distance=2cm}]
-      \node {Start}
-      child {node {Tie ($p$)}
-          child {node {Red (0.5)}}
-          child {node {Blue (0.5)}}
-        }
-      child {node {No Tie ($1-p$)}};
-    \end{tikzpicture}
-  \end{center}
-\end{frame}
-
-% Where do random bits come from?
-\section{Random Bits in Practice}
-\begin{frame}{Where do Random Bits Come From?}
-  \begin{itemize}
-    \item Hardware random number generators
-
-    \item Pseudo-random number generators (PRNGs)
-
-    \item Physical phenomena (thermal noise, radioactive decay)
-
-    \item In practice, PRNGs are sufficient for most applications
-  \end{itemize}
-\end{frame}
-
-% Probabilistic Data Structures
-\section{Probabilistic Data Structures}
-
-\begin{frame}{What is a Probabilistic Data Structure?}
-  \begin{block}{Definition}
-    Data structures that use randomization or probabilistic techniques to achieve space or time efficiency, often allowing for small errors (e.g., false positives).
-  \end{block}
-
-  \begin{itemize}
-    \item Useful for large-scale data, streaming, or approximate answers
-    \item Examples: Bloom filter, Count-Min Sketch, HyperLogLog
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Bloom Filter: What and Why?}
-  \begin{block}{What is a Bloom Filter?}
-    A space-efficient, probabilistic data structure for set membership queries.
-  \end{block}
-
-  \begin{itemize}
-    \item Answers: "Is $x$ in the set?"
-    \item May return false positives, but never false negatives
-    \item Very compact compared to hash sets
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{How Does a Bloom Filter Work?}
-  \begin{enumerate}
-    \item Start with a bit array of $m$ bits, all set to 0
-
-    \item Use $k$ independent hash functions
-
-    \item To add an element, set $k$ bits (one per hash) to 1
-
-    \item To check membership, test if all $k$ bits are 1
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{Bloom Filter Example}
-  Suppose $m=8$ bits, $k=2$ hash functions, and we insert $\{\text{cat}, \text{dog}\}$.
-
-  \begin{block}{Bit Array After Insertion}
-    \[
-      \begin{array}{|c|c|c|c|c|c|c|c|}
-        \hline
-        1 & 0 & 1 & 1 & 0 & 0 & 0 & 1 \\
-        \hline
-      \end{array}
-    \]
-  \end{block}
-
-  \begin{itemize}
-    \item To check if "cat" is in the set, hash and check the corresponding bits
-    \item If all are 1, answer is "possibly in set"; if any is 0, "definitely not in set"
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Bloom Filter: Trade-offs}
-  \begin{itemize}
-    \item \textbf{False positives:} May say "in set" when not
-
-    \item \textbf{No false negatives:} Never says "not in set" if it is
-
-    \item \textbf{Space efficient:} Much smaller than explicit set
-
-    \item \textbf{No deletions:} Standard Bloom filters do not support removing elements
-  \end{itemize}
-\end{frame}
 
 % References
 \begin{frame}[allowframebreaks]{References}
