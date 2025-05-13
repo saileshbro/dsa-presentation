@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom Filter Simulation</title>
+  <script src="../../js/tailwind.min.js"></script>
+  <script src="../../js/lodash.min.js"></script>
+  <script src="../../js/crypto-js.min.js"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto p-4">
+    <header class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-indigo-700 mb-2">Bloom Filter Simulation</h1>
+      <p class="text-gray-600">Check if your username or password has been compromised</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Input Section -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-4 text-indigo-600">Check Value</h2>
+        <div class="mb-4">
+          <label for="input-value" class="block text-gray-700 mb-2">Enter username or password to check:</label>
+          <input type="text" id="input-value"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            placeholder="Enter value to check">
+        </div>
+        <button id="check-btn"
+          class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">Check</button>
+        <button id="add-btn" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition ml-2">Add
+          to Database</button>
+        <div id="result" class="mt-4 p-3 hidden"></div>
+        <div class="hidden" id="prob-container">
+          <div id="prob-value" class="mt-2 p-3 text-sm bg-gray-100 rounded-md text-gray-700 hidden"></div>
+          <div id="prob-text" class="mt-2 p-3 text-sm bg-gray-100 rounded-md text-gray-700 hidden"></div>
+        </div>
+      </div>
+
+      <!-- Visualization Section -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-4 text-indigo-600">Bloom Filter Visualization</h2>
+        <div class="mb-4">
+          <div class="flex justify-between mb-2">
+            <span class="text-gray-700">Size: <span id="filter-size">1024</span> bits</span>
+            <span class="text-gray-700">Hash Functions: <span id="hash-count">3</span></span>
+          </div>
+          <div id="bloom-visual"
+            class="w-full h-32 bg-gray-200 overflow-hidden rounded-md flex items-center justify-center relative">
+            <div id="bit-array" class="absolute top-0 left-0 w-full h-full flex flex-wrap"></div>
+            <div id="visual-overlay"
+              class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-200 bg-opacity-80 hidden">
+              <div class="text-center">
+                <div id="hash-positions" class="text-sm text-gray-800 mb-2"></div>
+                <div id="visual-result" class="font-semibold"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <h3 class="text-lg font-medium mb-2 text-gray-700">Settings</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="size-slider" class="block text-sm text-gray-600 mb-1">Filter Size</label>
+              <input type="range" id="size-slider" min="64" max="2048" step="64" value="1024" class="w-full">
+            </div>
+            <div>
+              <label for="hash-slider" class="block text-sm text-gray-600 mb-1">Hash Functions</label>
+              <input type="range" id="hash-slider" min="1" max="8" step="1" value="3" class="w-full">
+            </div>
+          </div>
+          <button id="reset-btn"
+            class="mt-3 bg-red-600 text-white px-3 py-1 text-sm rounded-md hover:bg-red-700 transition">Reset
+            Filter</button>
+        </div>
+
+        <div class="border-t pt-4">
+          <h3 class="text-lg font-medium mb-2 text-gray-700">Known Compromised Values</h3>
+          <div class="relative overflow-hidden h-24 border rounded-md">
+            <div class="flex flex-col h-full">
+              <div id="known-list-row1" class="flex-1 flex whitespace-nowrap infinite-scroll-container"></div>
+              <div id="known-list-row2" class="flex-1 flex whitespace-nowrap infinite-scroll-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Information Section -->
+    <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-semibold mb-4 text-indigo-600">About Bloom Filters</h2>
+      <p class="text-gray-700 mb-4">
+        A Bloom filter is a space-efficient probabilistic data structure designed to quickly test whether an element
+        is present in a set. It can have false positives (incorrectly reporting an element is in the set) but no
+        false negatives (if it reports an element is not in the set, it definitely is not).
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h3 class="text-lg font-medium mb-2 text-gray-700">How It Works</h3>
+          <ol class="list-decimal list-inside text-gray-600 space-y-1">
+            <li>Multiple hash functions are applied to the input element</li>
+            <li>Each hash function gives a position in the bit array</li>
+            <li>When adding an element, all corresponding bits are set to 1</li>
+            <li>When checking, if all corresponding bits are 1, the element might be in the set</li>
+            <li>If any bit is 0, the element is definitely not in the set</li>
+          </ol>
+        </div>
+        <div>
+          <h3 class="text-lg font-medium mb-2 text-gray-700">Use Cases</h3>
+          <ul class="list-disc list-inside text-gray-600 space-y-1">
+            <li>Checking if a username is taken before querying a database</li>
+            <li>"Have I Been Pwned" password checking</li>
+            <li>Spell checkers</li>
+            <li>Web cache sharing</li>
+            <li>Network packet routing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Bloom filter implementation
+      class BloomFilter {
+        constructor(size = 1024, hashCount = 3) {
+          this.size = size;
+          this.hashCount = hashCount;
+          this.bitArray = new Array(size).fill(false);
+          this.knownItems = []; // For demonstration purposes
+        }
+
+        add(item) {
+          const positions = this.getHashPositions(item);
+          positions.forEach(pos => {
+            this.bitArray[pos] = true;
+          });
+          // For demo purposes only - a real bloom filter wouldn't store the items
+          if (!this.knownItems.includes(item)) {
+            this.knownItems.push(item);
+          }
+          return positions;
+        }
+
+        check(item) {
+          const positions = this.getHashPositions(item);
+          const result = positions.every(pos => this.bitArray[pos]);
+          return { positions, result };
+        }
+
+        getHashPositions(item) {
+          const positions = [];
+          for (let i = 0; i < this.hashCount; i++) {
+            // Use different seeds for each hash function
+            const hash = this.hash(item + i.toString());
+            positions.push(hash % this.size);
+          }
+          return positions;
+        }
+
+        hash(str) {
+          // Simple hash function using CryptoJS
+          const hash = CryptoJS.SHA256(str).toString();
+          // Convert first 8 chars of hash to number
+          return parseInt(hash.substring(0, 8), 16);
+        }
+
+        reset() {
+          this.bitArray = new Array(this.size).fill(false);
+          this.knownItems = [];
+        }
+
+        // Calculate false positive probability
+        getFalsePositiveRate() {
+          // Formula: (1 - e^(-k*n/m))^k
+          // where k = number of hash functions, n = number of items, m = bit array size
+          const k = this.hashCount;
+          const n = this.knownItems.length;
+          const m = this.size;
+
+          // Calculate the probability
+          const exponent = -k * n / m;
+          const probability = Math.pow(1 - Math.exp(exponent), k);
+
+          return probability;
+        }
+      }
+
+      // Initialize bloom filter
+      let bloomFilter = new BloomFilter(1024, 3);
+
+      // Add some initial values
+      const initialValues = [
+        'password123', 'admin', 'qwerty', '123456', 'letmein',
+        'baseball', 'dragon', 'football', 'monkey', 'abc123',
+        'welcome', 'master', 'hottie', 'shadow', 'sunshine',
+        // Additional compromised values
+        'password', '12345678', 'qwerty123', 'admin123', 'football123',
+        '111111', '1234567', '12345', 'iloveyou', '1234567890',
+        'superman', 'batman', 'test123', 'access', 'princess',
+        'trustno1', 'passw0rd', 'ashley', 'michael', 'jennifer',
+        'hunter2', 'zaq1zaq1', 'hello123', 'charlie', 'jesus',
+        'ninja', 'mustang', 'chocolate', 'starwars', 'whatever',
+        'summer', 'winter', '123123', 'secret', 'welcome1',
+        'rootadmin', 'passw0rd', 'adminadmin', 'qwertyui', 'changeme',
+        'root123', 'adminpass', 'password1', 'alexander', 'lovely',
+        'dragon123', 'flower', 'freedom', 'test1234', 'killer'
+      ];
+      initialValues.forEach(val => bloomFilter.add(val));
+      updateKnownList();
+
+      // Setup UI elements
+      const inputValue = document.getElementById('input-value');
+      const checkBtn = document.getElementById('check-btn');
+      const addBtn = document.getElementById('add-btn');
+      const resetBtn = document.getElementById('reset-btn');
+      const result = document.getElementById('result');
+      const sizeSlider = document.getElementById('size-slider');
+      const hashSlider = document.getElementById('hash-slider');
+      const filterSize = document.getElementById('filter-size');
+      const hashCount = document.getElementById('hash-count');
+      const bitArray = document.getElementById('bit-array');
+      const visualOverlay = document.getElementById('visual-overlay');
+      const hashPositions = document.getElementById('hash-positions');
+      const visualResult = document.getElementById('visual-result');
+
+      // Update visualization
+      function updateVisualization() {
+        // Clear current visualization
+        bitArray.innerHTML = '';
+
+        // Create bit elements
+        const displayMax = 1024; // Maximum number of bits to show
+        const displaySize = Math.min(bloomFilter.size, displayMax);
+        const scaleFactor = bloomFilter.size / displaySize;
+
+        for (let i = 0; i < displaySize; i++) {
+          const bitIndex = Math.floor(i * scaleFactor);
+          const isSet = bloomFilter.bitArray[bitIndex];
+
+          const bit = document.createElement('div');
+          bit.className = `bit ${isSet ? 'bg-indigo-500' : 'bg-gray-300'}`;
+          bit.style.width = '4px';
+          bit.style.height = '100%';
+          bit.style.margin = '0 1px';
+          bit.dataset.index = bitIndex;
+
+          bitArray.appendChild(bit);
+        }
+      }
+
+      // Handle checking
+      function checkValue() {
+        const value = inputValue.value.trim();
+        if (!value) return;
+
+        // Check against bloom filter
+        const checkResult = bloomFilter.check(value);
+
+        // Update UI with result - FIXED CLASS MANAGEMENT
+        result.className = 'mt-4 p-3'; // Reset to base classes only
+
+        // Get the probability container and elements
+        const probContainer = document.getElementById('prob-container');
+        const probValue = document.getElementById('prob-value');
+        const probText = document.getElementById('prob-text');
+
+        if (checkResult.result) {
+          // Calculate false positive probability
+          const falsePositiveRate = bloomFilter.getFalsePositiveRate();
+          const probability = (falsePositiveRate * 100).toFixed(2);
+          const confidence = (100 - probability).toFixed(2);
+
+          result.classList.add('bg-red-100', 'text-red-800');
+          result.textContent = 'Possibly compromised! This value may exist in the database.';
+
+          // Show probability container
+          probContainer.classList.remove('hidden');
+
+          // Set up animated probability value display
+          probValue.innerHTML = `
+            <div class="flex justify-between items-center">
+              <span class="font-semibold">Confidence:</span>
+              <span class="font-bold text-3xl text-red-600" id="animated-value">0%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+              <div class="bg-red-600 h-2.5 rounded-full transition-all duration-1000 ease-out" id="progress-bar" style="width: 0%"></div>
+            </div>
+          `;
+
+          // Set up the probability text explanation
+          probText.innerHTML = `
+            <div class="mt-1">
+              <p><span class="font-semibold">Real match probability:</span> ${confidence}%</p>
+              <p><span class="font-semibold">False positive probability:</span> ${probability}%</p>
+              <p class="mt-2 text-xs text-gray-500">A Bloom filter can have false positives but no false negatives.</p>
+            </div>
+          `;
+
+          // Show both divs
+          probValue.classList.remove('hidden');
+          probText.classList.remove('hidden');
+
+          // Animate the confidence value and progress bar
+          setTimeout(() => {
+            const animatedValue = document.getElementById('animated-value');
+            const progressBar = document.getElementById('progress-bar');
+
+            // Set initial display
+            animatedValue.textContent = '0%';
+            progressBar.style.width = '0%';
+
+            // Animate to final value
+            setTimeout(() => {
+              animatedValue.textContent = `${confidence}%`;
+              progressBar.style.width = `${confidence}%`;
+            }, 50);
+          }, 10);
+
+        } else {
+          result.classList.add('bg-green-100', 'text-green-800');
+          result.textContent = `Not found! This value is definitely not in the database.`;
+          // Hide probability container for negative results
+          probContainer.classList.add('hidden');
+        }
+        result.classList.remove('hidden');
+
+        // Highlight hash positions in visualization
+        visualOverlay.classList.remove('hidden');
+        hashPositions.textContent = `Hash positions: ${checkResult.positions.join(', ')}`;
+
+        if (checkResult.result) {
+          visualResult.textContent = 'Possibly Compromised!';
+          visualResult.className = 'font-semibold text-red-600';
+        } else {
+          visualResult.textContent = 'Not Found!';
+          visualResult.className = 'font-semibold text-green-600';
+        }
+
+        // Highlight bits
+        document.querySelectorAll('.bit-highlight').forEach(el => {
+          el.classList.remove('bit-highlight', 'ring-2', 'ring-yellow-400', 'z-10');
+        });
+
+        checkResult.positions.forEach(pos => {
+          const scaleFactor = bloomFilter.size / Math.min(bloomFilter.size, 1024);
+          const displayPos = Math.floor(pos / scaleFactor);
+          const bits = document.querySelectorAll(`.bit`);
+          if (bits[displayPos]) {
+            bits[displayPos].classList.add('bit-highlight', 'ring-2', 'ring-yellow-400', 'z-10');
+          }
+        });
+
+        // Clear overlay after 3 seconds
+        setTimeout(() => {
+          visualOverlay.classList.add('hidden');
+          document.querySelectorAll('.bit-highlight').forEach(el => {
+            el.classList.remove('bit-highlight', 'ring-2', 'ring-yellow-400', 'z-10');
+          });
+        }, 3000);
+      }
+
+      // Handle adding a value
+      function addValue() {
+        const value = inputValue.value.trim();
+        if (!value) return;
+
+        // Add to bloom filter
+        const positions = bloomFilter.add(value);
+
+        // Update visualization
+        updateVisualization();
+        updateKnownList();
+
+        // Show confirmation - FIXED CLASS MANAGEMENT
+        result.className = 'mt-4 p-3'; // Reset to base classes only
+        result.classList.add('bg-blue-100', 'text-blue-800');
+        result.textContent = `Added "${value}" to the database!`;
+
+        // Hide probability container
+        document.getElementById('prob-container').classList.add('hidden');
+
+        // Highlight added positions temporarily
+        visualOverlay.classList.remove('hidden');
+        hashPositions.textContent = `Hash positions: ${positions.join(', ')}`;
+        visualResult.textContent = 'Value Added!';
+        visualResult.className = 'font-semibold text-blue-600';
+
+        // Clear overlay after 3 seconds
+        setTimeout(() => {
+          visualOverlay.classList.add('hidden');
+        }, 3000);
+      }
+
+      // Add some styling for the infinite scroll animation
+      const styleElement = document.createElement('style');
+      styleElement.textContent = `
+        .infinite-scroll-container {
+          display: flex;
+          animation: scroll 20s linear infinite;
+        }
+
+        .infinite-scroll-container:nth-child(2) {
+          animation-direction: reverse;
+          animation-duration: 25s;
+        }
+
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .item-block {
+          display: inline-block;
+          padding: 6px 12px;
+          margin: 4px;
+          background-color: #f3f4f6;
+          border-radius: 0.375rem;
+          white-space: nowrap;
+        }
+      `;
+      document.head.appendChild(styleElement);
+
+      // Update known items list with the scrolling functionality
+      function updateKnownList() {
+        const row1 = document.getElementById('known-list-row1');
+        const row2 = document.getElementById('known-list-row2');
+        row1.innerHTML = '';
+        row2.innerHTML = '';
+
+        if (bloomFilter.knownItems.length === 0) {
+          const itemEl = document.createElement('div');
+          itemEl.className = 'item-block';
+          itemEl.textContent = 'No items in database';
+          row1.appendChild(itemEl);
+          return;
+        }
+
+        // Split items between the two rows
+        const items = [...bloomFilter.knownItems];
+        const midpoint = Math.ceil(items.length / 2);
+
+        const firstHalf = items.slice(0, midpoint);
+        const secondHalf = items.slice(midpoint);
+
+        // Create the initial set of items for row 1
+        firstHalf.forEach(item => {
+          const itemEl = document.createElement('div');
+          itemEl.className = 'item-block';
+          itemEl.textContent = item;
+          row1.appendChild(itemEl);
+        });
+
+        // Create the initial set of items for row 2
+        secondHalf.forEach(item => {
+          const itemEl = document.createElement('div');
+          itemEl.className = 'item-block';
+          itemEl.textContent = item;
+          row2.appendChild(itemEl);
+        });
+
+        // Clone the items to create the continuous scrolling effect
+        const cloneItems = (row) => {
+          const itemsToClone = row.querySelectorAll('.item-block');
+          itemsToClone.forEach(item => {
+            const clone = item.cloneNode(true);
+            row.appendChild(clone);
+          });
+        };
+
+        cloneItems(row1);
+        cloneItems(row2);
+
+        // Adjust the animation duration based on the number of items
+        const baseSpeed = 20; // Faster base speed (was 30)
+        const row1Duration = Math.max(baseSpeed * 0.7, Math.min(baseSpeed * 1.5, firstHalf.length * 1.2));
+        const row2Duration = Math.max(baseSpeed * 0.8, Math.min(baseSpeed * 1.8, secondHalf.length * 1.4));
+
+        row1.style.animationDuration = `${row1Duration}s`;
+        row2.style.animationDuration = `${row2Duration}s`;
+      }
+
+      // Reset bloom filter
+      function resetFilter() {
+        bloomFilter.reset();
+        updateVisualization();
+        updateKnownList();
+        result.classList.add('hidden');
+
+        // Add back initial values
+        initialValues.forEach(val => bloomFilter.add(val));
+        updateVisualization();
+        updateKnownList();
+
+        // Show confirmation - FIXED CLASS MANAGEMENT
+        result.className = 'mt-4 p-3'; // Reset to base classes only
+        result.classList.add('bg-gray-100', 'text-gray-800');
+        result.textContent = 'Bloom filter has been reset to defaults!';
+
+        // Hide probability container
+        document.getElementById('prob-container').classList.add('hidden');
+      }
+
+      // Handle filter size change
+      function changeFilterSize() {
+        const newSize = parseInt(sizeSlider.value);
+        filterSize.textContent = newSize;
+
+        // Create new filter with updated size
+        const newFilter = new BloomFilter(newSize, bloomFilter.hashCount);
+
+        // Add all known items to new filter
+        bloomFilter.knownItems.forEach(item => newFilter.add(item));
+
+        bloomFilter = newFilter;
+        updateVisualization();
+      }
+
+      // Handle hash count change
+      function changeHashCount() {
+        const newCount = parseInt(hashSlider.value);
+        hashCount.textContent = newCount;
+
+        // Create new filter with updated hash count
+        const newFilter = new BloomFilter(bloomFilter.size, newCount);
+
+        // Add all known items to new filter
+        bloomFilter.knownItems.forEach(item => newFilter.add(item));
+
+        bloomFilter = newFilter;
+        updateVisualization();
+      }
+
+      // Set up event listeners
+      checkBtn.addEventListener('click', checkValue);
+      addBtn.addEventListener('click', addValue);
+      resetBtn.addEventListener('click', resetFilter);
+      sizeSlider.addEventListener('input', function () {
+        filterSize.textContent = this.value;
+      });
+      sizeSlider.addEventListener('change', changeFilterSize);
+      hashSlider.addEventListener('input', function () {
+        hashCount.textContent = this.value;
+      });
+      hashSlider.addEventListener('change', changeHashCount);
+
+      // Handle enter key in input
+      inputValue.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+          checkValue();
+        }
+      });
+
+      // Initial visualization
+      updateVisualization();
+    });
+  </script>
+</body>
+
+</html>

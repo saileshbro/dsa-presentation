@@ -1,4 +1,37 @@
-% Step 1: Initial Array (before pivot)
+\section{Example: Randomized Quicksort}
+
+% New slide: QuickSort vs Randomized QuickSort steps
+\begin{frame}{QuickSort vs Randomized QuickSort}
+  \textbf{QuickSort:}
+  \begin{enumerate}
+    \item Pick a pivot element from the array \parencite{10.1093/comjnl/5.1.10}
+    \item Split array into 3 subarrays: those smaller than pivot, those larger than pivot, and the pivot itself
+    \item Recursively sort the subarrays, and concatenate them
+  \end{enumerate}
+  \vspace{1em}
+  \textbf{Randomized QuickSort:}
+  \begin{enumerate}
+    \item Pick a pivot element \textbf{uniformly at random} from the array \parencite{motwani1995randomized}
+    \item Split array into 3 subarrays: those smaller than pivot, those larger than pivot, and the pivot itself
+    \item Recursively sort the subarrays, and concatenate them
+  \end{enumerate}
+\end{frame}
+
+% New slide: Worst-case for QuickSort
+\begin{frame}{Example: Randomized Quicksort}
+  \textbf{Recall:} QuickSort can take $\Omega(n^2)$ time to sort an array of size $n$ \parencite{359631}
+\end{frame}
+
+% New slide: Theorem and expectation for Randomized QuickSort
+\begin{frame}{Randomized QuickSort: Expected Runtime}
+  \textbf{Theorem}
+  \begin{block}{}
+    Randomized QuickSort sorts a given array of length $n$ in $O(n \log n)$ expected time. \parencite{journals/acta/Sedgewick77}
+  \end{block}
+  \vspace{1em}
+  \textbf{Note:} On every input, randomized QuickSort takes $O(n \log n)$ time in expectation. On every input, it may take $\Omega(n^2)$ time with some small probability.
+\end{frame}
+
 \subsection{Step-by-Step Execution}
 \begin{frame}{Randomized Quicksort: Step 1 (Initial Array)}
   % Use columns for top-aligned split layout
@@ -93,7 +126,7 @@
             10
           }
           % Left child
-          child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
+          child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                   \textbf{A[0,5]}
                 }}
           % Right child
@@ -196,12 +229,10 @@
             10
           }
           % Left child
-          % Left child
           child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=white, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}
                     }}
@@ -255,12 +286,10 @@
             10
           }
           % Left child
-          % Left child
           child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -320,12 +349,10 @@
             10
           }
           % Left child
-          % Left child
           child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -387,12 +414,10 @@
             10
           }
           % Left child
-          % Left child
           child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -466,7 +491,6 @@
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -548,7 +572,6 @@
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -615,7 +638,6 @@
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -681,7 +703,6 @@
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -759,7 +780,6 @@
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -853,7 +873,6 @@
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -944,7 +963,6 @@
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -1013,7 +1031,6 @@
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -1105,7 +1122,6 @@
                   \textbf{A[0,5]} \\
                   4
                 }
-              % New children for this step
               child {node[circle, draw, fill=green!20, minimum size=1cm, align=center] {
                       \textbf{A[0,2]}\\
                       0
@@ -1165,17 +1181,10 @@
   \]
 \end{frame}
 
-\begin{frame}[fragile]{Quicksort Implementation (Python)}
-  \begin{lstlisting}
-import random
-def quicksort(arr):
-    if len(arr) <= 1:
-        return arr
-    pivot_idx = random.randrange(len(arr))  # Random index
-    pivot = arr[pivot_idx]
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x > pivot]
-    return quicksort(left) + middle + quicksort(right)
-  \end{lstlisting}
+\begin{frame}{Quicksort Time Complexity}
+  \begin{itemize}
+    \item \textbf{Worst-case:} $O(n^2)$
+    \item \textbf{Best-case:} $O(n \log n)$
+    \item \textbf{Expected:} $O(n \log n)$ (randomized)
+  \end{itemize}
 \end{frame}

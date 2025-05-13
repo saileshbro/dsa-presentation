@@ -1,0 +1,1255 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{lasvegas1979babai}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=cfe2ebe8e6de75b0a81d44ecef78d092}{%
+           family={Babai},
+           familyi={B\bibinitperiod},
+           given={László},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Université de Montréal}%
+      }
+      \strng{namehash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{fullhash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{fullhashraw}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{bibnamehash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{authorbibnamehash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{authornamehash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{authorfullhash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{authorfullhashraw}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Technical Report DMS}
+      \field{title}{Monte-Carlo algorithms in graph isomorphism testing}
+      \field{volume}{79-10}
+      \field{year}{1979}
+    \endentry
+    \entry{beckmann1971history}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9f470a365677474b3a21d009775e792e}{%
+           family={Beckmann},
+           familyi={B\bibinitperiod},
+           given={Petr},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {St. Martin's Press}%
+      }
+      \strng{namehash}{9f470a365677474b3a21d009775e792e}
+      \strng{fullhash}{9f470a365677474b3a21d009775e792e}
+      \strng{fullhashraw}{9f470a365677474b3a21d009775e792e}
+      \strng{bibnamehash}{9f470a365677474b3a21d009775e792e}
+      \strng{authorbibnamehash}{9f470a365677474b3a21d009775e792e}
+      \strng{authornamehash}{9f470a365677474b3a21d009775e792e}
+      \strng{authorfullhash}{9f470a365677474b3a21d009775e792e}
+      \strng{authorfullhashraw}{9f470a365677474b3a21d009775e792e}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A History of Pi}
+      \field{year}{1971}
+    \endentry
+    \entry{10.1145/362686.362692}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3124dcc7c1c1643c091687ec4b0dcd3e}{%
+           family={Bloom},
+           familyi={B\bibinitperiod},
+           given={Burton\bibnamedelima H.},
+           giveni={B\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{fullhash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{fullhashraw}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{bibnamehash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{authorbibnamehash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{authornamehash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{authorfullhash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{authorfullhashraw}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0001-0782}
+      \field{journaltitle}{Commun. ACM}
+      \field{month}{7}
+      \field{number}{7}
+      \field{title}{Space/time trade-offs in hash coding with allowable errors}
+      \field{volume}{13}
+      \field{year}{1970}
+      \field{pages}{422\bibrangedash 426}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1145/362686.362692
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/362686.362692
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/362686.362692
+      \endverb
+      \keyw{hash addressing,hash coding,retrieval efficiency,retrieval trade-offs,scatter storage,searching,storage efficiency,storage layout}
+    \endentry
+    \entry{im/1109191032}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=56f242d1477d1823d8b197fecefa9a1e}{%
+           family={Broder},
+           familyi={B\bibinitperiod},
+           given={Andrei},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4dbcb1c7060726deee27d97b4bf31321}{%
+           family={Mitzenmacher},
+           familyi={M\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {A K Peters, Ltd.}%
+      }
+      \strng{namehash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{fullhash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{fullhashraw}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{bibnamehash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{authorbibnamehash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{authornamehash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{authorfullhash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{authorfullhashraw}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Internet Mathematics}
+      \field{number}{4}
+      \field{title}{{Network Applications of Bloom Filters: A Survey}}
+      \field{volume}{1}
+      \field{year}{2003}
+      \field{pages}{485\bibrangedash 509}
+      \range{pages}{25}
+    \endentry
+    \entry{MonteCarloCookson2005}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=43f82e74e08c006f7f7f0c566e08f2b3}{%
+           family={Cookson},
+           familyi={C\bibinitperiod},
+           given={John\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{fullhash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{fullhashraw}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{bibnamehash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{authorbibnamehash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{authornamehash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{authorfullhash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{authorfullhashraw}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nuclear Science and Engineering}
+      \field{number}{3}
+      \field{title}{Monte Carlo Error Analyses of Spallation Neutron Source and Water Moderator}
+      \field{volume}{150}
+      \field{year}{2005}
+      \field{pages}{296\bibrangedash 314}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.13182/NSE05-A2527
+      \endverb
+    \endentry
+    \entry{LasVegasGupta1992}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4d9c3aa136dec0055cecfd2c16202cd2}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Sachindra\bibnamedelima S.},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cbd2b7483aa9e98246b9bebef28c2c04}{%
+           family={Ramachandran},
+           familyi={R\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{fullhash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{fullhashraw}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{bibnamehash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{authorbibnamehash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{authornamehash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{authorfullhash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{authorfullhashraw}{9c9369d82a90b87b4f8d77394ef893f5}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Processing Letters}
+      \field{number}{2}
+      \field{title}{A Las Vegas algorithm for sorting by comparison}
+      \field{volume}{41}
+      \field{year}{1992}
+      \field{pages}{77\bibrangedash 82}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1016/0020-0190(92)90132-4
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/0020019092901324
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/0020019092901324
+      \endverb
+    \endentry
+    \entry{hammersley1964monte}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=08a376882401bc1c10ca00e178fdc184}{%
+           family={Hammersley},
+           familyi={H\bibinitperiod},
+           given={J.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9107260f0630d5462ad22456606accc5}{%
+           family={Handscomb},
+           familyi={H\bibinitperiod},
+           given={D.\bibnamedelimi C.},
+           giveni={D\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Methuen}%
+      }
+      \strng{namehash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{fullhash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{fullhashraw}{435af7830706b42b926fad1ff0e20a10}
+      \strng{bibnamehash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{authorbibnamehash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{authornamehash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{authorfullhash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{authorfullhashraw}{435af7830706b42b926fad1ff0e20a10}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Monte Carlo Methods}
+      \field{year}{1964}
+    \endentry
+    \entry{10.1093/comjnl/5.1.10}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d6facc8397f631d3ef01dd70be993640}{%
+           family={Hoare},
+           familyi={H\bibinitperiod},
+           given={C.\bibnamedelimi A.\bibnamedelimi R.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{fullhash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{fullhashraw}{d6facc8397f631d3ef01dd70be993640}
+      \strng{bibnamehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authorbibnamehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authornamehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authorfullhash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authorfullhashraw}{d6facc8397f631d3ef01dd70be993640}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A description is given of a new method of sorting in the random-access store of a computer. The method compares very favourably with other known methods in speed, in economy of storage, and in ease of programming. Certain refinements of the method, which may be useful in the optimization of inner loops, are described in the second part of the paper.}
+      \field{issn}{0010-4620}
+      \field{journaltitle}{The Computer Journal}
+      \field{month}{01}
+      \field{number}{1}
+      \field{title}{Quicksort}
+      \field{volume}{5}
+      \field{year}{1962}
+      \field{pages}{10\bibrangedash 16}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1093/comjnl/5.1.10
+      \endverb
+      \verb{eprint}
+      \verb https://academic.oup.com/comjnl/article-pdf/5/1/10/1111445/050010.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/comjnl/5.1.10
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1093/comjnl/5.1.10
+      \endverb
+    \endentry
+    \entry{MonteCarloError1991}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4c1290ff95395749ba18ecc23c19a2a0}{%
+           family={James},
+           familyi={J\bibinitperiod},
+           given={Fred},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{fullhash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{fullhashraw}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{bibnamehash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{authorbibnamehash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{authornamehash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{authorfullhash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{authorfullhashraw}{4c1290ff95395749ba18ecc23c19a2a0}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Physics Communications}
+      \field{number}{3}
+      \field{title}{Determining the Statistical Accuracy of Monte Carlo Method Results}
+      \field{volume}{60}
+      \field{year}{1990}
+      \field{pages}{329\bibrangedash 344}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1016/0010-4655(90)90039-9
+      \endverb
+    \endentry
+    \entry{kalos2008monte}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ef0c4912946ca6bdef4da80f2c3dba58}{%
+           family={Kalos},
+           familyi={K\bibinitperiod},
+           given={Malvin\bibnamedelima H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b830dc0a559a7a5f5d40e24a3815edaf}{%
+           family={Whitlock},
+           familyi={W\bibinitperiod},
+           given={Paula\bibnamedelima A.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley-VCH}%
+      }
+      \strng{namehash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{fullhash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{fullhashraw}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{bibnamehash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{authorbibnamehash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{authornamehash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{authorfullhash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{authorfullhashraw}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-527-40662-6}
+      \field{title}{Monte Carlo Methods}
+      \field{year}{2008}
+    \endentry
+    \entry{Metropolis01091949}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=2b73f47a1a84dd52f45fe57c381c3786}{%
+           family={Metropolis},
+           familyi={M\bibinitperiod},
+           given={Nicholas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ebbfbc800848285c9dad5fbca3e36d17}{%
+           family={and},
+           familyi={a\bibinitperiod},
+           given={S.\bibnamedelimi Ulam},
+           giveni={S\bibinitperiod\bibinitdelim U\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {ASA Website}%
+      }
+      \strng{namehash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{fullhash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{fullhashraw}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{bibnamehash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{authorbibnamehash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{authornamehash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{authorfullhash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{authorfullhashraw}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{247}
+      \field{title}{The Monte Carlo Method}
+      \field{volume}{44}
+      \field{year}{1949}
+      \field{pages}{335\bibrangedash 341}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1080/01621459.1949.10483310
+      \endverb
+      \verb{eprint}
+      \verb https://www.tandfonline.com/doi/pdf/10.1080/01621459.1949.10483310
+      \endverb
+      \verb{urlraw}
+      \verb https://www.tandfonline.com/doi/abs/10.1080/01621459.1949.10483310
+      \endverb
+      \verb{url}
+      \verb https://www.tandfonline.com/doi/abs/10.1080/01621459.1949.10483310
+      \endverb
+    \endentry
+    \entry{motwani1995randomized}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=2f555526320a1c4028ad0f6328953999}{%
+           family={Motwani},
+           familyi={M\bibinitperiod},
+           given={Rajeev},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=68f523934985e2f967ab2b15f4ded07c}{%
+           family={Raghavan},
+           familyi={R\bibinitperiod},
+           given={Prabhakar},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{fullhash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{fullhashraw}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{bibnamehash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{authorbibnamehash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{authornamehash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{authorfullhash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{authorfullhashraw}{7435d054c026cc3abd35ccc8aa119e5d}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Randomized Algorithms}
+      \field{year}{1995}
+    \endentry
+    \entry{journals/acta/Sedgewick77}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6a9c16ef79ae932cd7e8bc985da5a937}{%
+           family={Sedgewick},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{fullhash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{fullhashraw}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{bibnamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorbibnamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authornamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorfullhash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorfullhashraw}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \field{extraname}{1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Acta Inf.}
+      \field{title}{The Analysis of Quicksort Programs.}
+      \field{volume}{7}
+      \field{year}{1977}
+      \field{pages}{327\bibrangedash 355}
+      \range{pages}{29}
+      \verb{urlraw}
+      \verb http://dblp.uni-trier.de/db/journals/acta/acta7.html#Sedgewick77
+      \endverb
+      \verb{url}
+      \verb http://dblp.uni-trier.de/db/journals/acta/acta7.html#Sedgewick77
+      \endverb
+      \keyw{analysis implementing quicksort}
+    \endentry
+    \entry{359631}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6a9c16ef79ae932cd7e8bc985da5a937}{%
+           family={Sedgewick},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{fullhash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{fullhashraw}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{bibnamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorbibnamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authornamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorfullhash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorfullhashraw}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \field{extraname}{2}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper is a practical study of how to implement the Quicksort sorting algorithm and its best variants on real computers, including how to apply various code optimization techniques. A detailed implementation combining the most effective improvements to Quicksort is given, along with a discussion of how to implement it in assembly language. Analytic results describing the performance of the programs are summarized. A variety of special situations are considered from a practical standpoint to illustrate Quicksort's wide applicability as an internal sorting method which requires negligible extra storage.}
+      \field{issn}{0001-0782}
+      \field{journaltitle}{Commun. ACM}
+      \field{number}{10}
+      \field{title}{Implementing Quicksort programs}
+      \field{volume}{21}
+      \field{year}{1978}
+      \field{pages}{847\bibrangedash 857}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1145/359619.359631
+      \endverb
+      \verb{urlraw}
+      \verb http://portal.acm.org/citation.cfm?id=359619.359631&coll=Portal&dl=ACM&CFID=88775871&CFTOKEN=40392553
+      \endverb
+      \verb{url}
+      \verb http://portal.acm.org/citation.cfm?id=359619.359631&coll=Portal&dl=ACM&CFID=88775871&CFTOKEN=40392553
+      \endverb
+      \keyw{2012 implementing kde quicksort seminar}
+    \endentry
+    \entry{UsernameProblem2012}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=93a575777f636107b8f65a815802b18f}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xiaofeng},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=278f8fdde9d1c6899936576e4fad26c6}{%
+           family={Reiter},
+           familyi={R\bibinitperiod},
+           given={Michael\bibnamedelima K.},
+           giveni={M\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{fullhash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{fullhashraw}{30c29191338ca75f02992e0487c49b3b}
+      \strng{bibnamehash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{authorbibnamehash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{authornamehash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{authorfullhash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{authorfullhashraw}{30c29191338ca75f02992e0487c49b3b}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the 19th ACM Conference on Computer and Communications Security}
+      \field{title}{Defending Against Denial-of-Information Attacks in Social Networks}
+      \field{year}{2012}
+      \field{pages}{63\bibrangedash 74}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/2382196.2382206
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{lasvegas1979babai}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=cfe2ebe8e6de75b0a81d44ecef78d092}{%
+           family={Babai},
+           familyi={B\bibinitperiod},
+           given={László},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Université de Montréal}%
+      }
+      \strng{namehash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{fullhash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{fullhashraw}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{bibnamehash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{authorbibnamehash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{authornamehash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{authorfullhash}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \strng{authorfullhashraw}{cfe2ebe8e6de75b0a81d44ecef78d092}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Technical Report DMS}
+      \field{title}{Monte-Carlo algorithms in graph isomorphism testing}
+      \field{volume}{79-10}
+      \field{year}{1979}
+    \endentry
+    \entry{beckmann1971history}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9f470a365677474b3a21d009775e792e}{%
+           family={Beckmann},
+           familyi={B\bibinitperiod},
+           given={Petr},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {St. Martin's Press}%
+      }
+      \strng{namehash}{9f470a365677474b3a21d009775e792e}
+      \strng{fullhash}{9f470a365677474b3a21d009775e792e}
+      \strng{fullhashraw}{9f470a365677474b3a21d009775e792e}
+      \strng{bibnamehash}{9f470a365677474b3a21d009775e792e}
+      \strng{authorbibnamehash}{9f470a365677474b3a21d009775e792e}
+      \strng{authornamehash}{9f470a365677474b3a21d009775e792e}
+      \strng{authorfullhash}{9f470a365677474b3a21d009775e792e}
+      \strng{authorfullhashraw}{9f470a365677474b3a21d009775e792e}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A History of Pi}
+      \field{year}{1971}
+    \endentry
+    \entry{10.1145/362686.362692}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3124dcc7c1c1643c091687ec4b0dcd3e}{%
+           family={Bloom},
+           familyi={B\bibinitperiod},
+           given={Burton\bibnamedelima H.},
+           giveni={B\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{fullhash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{fullhashraw}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{bibnamehash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{authorbibnamehash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{authornamehash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{authorfullhash}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \strng{authorfullhashraw}{3124dcc7c1c1643c091687ec4b0dcd3e}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0001-0782}
+      \field{journaltitle}{Commun. ACM}
+      \field{month}{7}
+      \field{number}{7}
+      \field{title}{Space/time trade-offs in hash coding with allowable errors}
+      \field{volume}{13}
+      \field{year}{1970}
+      \field{pages}{422\bibrangedash 426}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1145/362686.362692
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/362686.362692
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/362686.362692
+      \endverb
+      \keyw{hash addressing,hash coding,retrieval efficiency,retrieval trade-offs,scatter storage,searching,storage efficiency,storage layout}
+    \endentry
+    \entry{im/1109191032}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=56f242d1477d1823d8b197fecefa9a1e}{%
+           family={Broder},
+           familyi={B\bibinitperiod},
+           given={Andrei},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4dbcb1c7060726deee27d97b4bf31321}{%
+           family={Mitzenmacher},
+           familyi={M\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {A K Peters, Ltd.}%
+      }
+      \strng{namehash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{fullhash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{fullhashraw}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{bibnamehash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{authorbibnamehash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{authornamehash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{authorfullhash}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \strng{authorfullhashraw}{cd7d468f5fe02ec59d8b859ff69452c3}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Internet Mathematics}
+      \field{number}{4}
+      \field{title}{{Network Applications of Bloom Filters: A Survey}}
+      \field{volume}{1}
+      \field{year}{2003}
+      \field{pages}{485\bibrangedash 509}
+      \range{pages}{25}
+    \endentry
+    \entry{MonteCarloCookson2005}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=43f82e74e08c006f7f7f0c566e08f2b3}{%
+           family={Cookson},
+           familyi={C\bibinitperiod},
+           given={John\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{fullhash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{fullhashraw}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{bibnamehash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{authorbibnamehash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{authornamehash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{authorfullhash}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \strng{authorfullhashraw}{43f82e74e08c006f7f7f0c566e08f2b3}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nuclear Science and Engineering}
+      \field{number}{3}
+      \field{title}{Monte Carlo Error Analyses of Spallation Neutron Source and Water Moderator}
+      \field{volume}{150}
+      \field{year}{2005}
+      \field{pages}{296\bibrangedash 314}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.13182/NSE05-A2527
+      \endverb
+    \endentry
+    \entry{LasVegasGupta1992}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4d9c3aa136dec0055cecfd2c16202cd2}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Sachindra\bibnamedelima S.},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cbd2b7483aa9e98246b9bebef28c2c04}{%
+           family={Ramachandran},
+           familyi={R\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{fullhash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{fullhashraw}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{bibnamehash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{authorbibnamehash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{authornamehash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{authorfullhash}{9c9369d82a90b87b4f8d77394ef893f5}
+      \strng{authorfullhashraw}{9c9369d82a90b87b4f8d77394ef893f5}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Processing Letters}
+      \field{number}{2}
+      \field{title}{A Las Vegas algorithm for sorting by comparison}
+      \field{volume}{41}
+      \field{year}{1992}
+      \field{pages}{77\bibrangedash 82}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1016/0020-0190(92)90132-4
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/0020019092901324
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/0020019092901324
+      \endverb
+    \endentry
+    \entry{hammersley1964monte}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=08a376882401bc1c10ca00e178fdc184}{%
+           family={Hammersley},
+           familyi={H\bibinitperiod},
+           given={J.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9107260f0630d5462ad22456606accc5}{%
+           family={Handscomb},
+           familyi={H\bibinitperiod},
+           given={D.\bibnamedelimi C.},
+           giveni={D\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Methuen}%
+      }
+      \strng{namehash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{fullhash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{fullhashraw}{435af7830706b42b926fad1ff0e20a10}
+      \strng{bibnamehash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{authorbibnamehash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{authornamehash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{authorfullhash}{435af7830706b42b926fad1ff0e20a10}
+      \strng{authorfullhashraw}{435af7830706b42b926fad1ff0e20a10}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Monte Carlo Methods}
+      \field{year}{1964}
+    \endentry
+    \entry{10.1093/comjnl/5.1.10}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d6facc8397f631d3ef01dd70be993640}{%
+           family={Hoare},
+           familyi={H\bibinitperiod},
+           given={C.\bibnamedelimi A.\bibnamedelimi R.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{fullhash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{fullhashraw}{d6facc8397f631d3ef01dd70be993640}
+      \strng{bibnamehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authorbibnamehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authornamehash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authorfullhash}{d6facc8397f631d3ef01dd70be993640}
+      \strng{authorfullhashraw}{d6facc8397f631d3ef01dd70be993640}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A description is given of a new method of sorting in the random-access store of a computer. The method compares very favourably with other known methods in speed, in economy of storage, and in ease of programming. Certain refinements of the method, which may be useful in the optimization of inner loops, are described in the second part of the paper.}
+      \field{issn}{0010-4620}
+      \field{journaltitle}{The Computer Journal}
+      \field{month}{01}
+      \field{number}{1}
+      \field{title}{Quicksort}
+      \field{volume}{5}
+      \field{year}{1962}
+      \field{pages}{10\bibrangedash 16}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1093/comjnl/5.1.10
+      \endverb
+      \verb{eprint}
+      \verb https://academic.oup.com/comjnl/article-pdf/5/1/10/1111445/050010.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/comjnl/5.1.10
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1093/comjnl/5.1.10
+      \endverb
+    \endentry
+    \entry{MonteCarloError1991}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4c1290ff95395749ba18ecc23c19a2a0}{%
+           family={James},
+           familyi={J\bibinitperiod},
+           given={Fred},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{fullhash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{fullhashraw}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{bibnamehash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{authorbibnamehash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{authornamehash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{authorfullhash}{4c1290ff95395749ba18ecc23c19a2a0}
+      \strng{authorfullhashraw}{4c1290ff95395749ba18ecc23c19a2a0}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Physics Communications}
+      \field{number}{3}
+      \field{title}{Determining the Statistical Accuracy of Monte Carlo Method Results}
+      \field{volume}{60}
+      \field{year}{1990}
+      \field{pages}{329\bibrangedash 344}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1016/0010-4655(90)90039-9
+      \endverb
+    \endentry
+    \entry{kalos2008monte}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ef0c4912946ca6bdef4da80f2c3dba58}{%
+           family={Kalos},
+           familyi={K\bibinitperiod},
+           given={Malvin\bibnamedelima H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b830dc0a559a7a5f5d40e24a3815edaf}{%
+           family={Whitlock},
+           familyi={W\bibinitperiod},
+           given={Paula\bibnamedelima A.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley-VCH}%
+      }
+      \strng{namehash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{fullhash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{fullhashraw}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{bibnamehash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{authorbibnamehash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{authornamehash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{authorfullhash}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \strng{authorfullhashraw}{728a226f938c4e2ee1e0dc3e80b4cff2}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-527-40662-6}
+      \field{title}{Monte Carlo Methods}
+      \field{year}{2008}
+    \endentry
+    \entry{Metropolis01091949}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=2b73f47a1a84dd52f45fe57c381c3786}{%
+           family={Metropolis},
+           familyi={M\bibinitperiod},
+           given={Nicholas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ebbfbc800848285c9dad5fbca3e36d17}{%
+           family={and},
+           familyi={a\bibinitperiod},
+           given={S.\bibnamedelimi Ulam},
+           giveni={S\bibinitperiod\bibinitdelim U\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {ASA Website}%
+      }
+      \strng{namehash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{fullhash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{fullhashraw}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{bibnamehash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{authorbibnamehash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{authornamehash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{authorfullhash}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \strng{authorfullhashraw}{9ad4ffe93994962e1df06c9bd909d3d3}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{247}
+      \field{title}{The Monte Carlo Method}
+      \field{volume}{44}
+      \field{year}{1949}
+      \field{pages}{335\bibrangedash 341}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1080/01621459.1949.10483310
+      \endverb
+      \verb{eprint}
+      \verb https://www.tandfonline.com/doi/pdf/10.1080/01621459.1949.10483310
+      \endverb
+      \verb{urlraw}
+      \verb https://www.tandfonline.com/doi/abs/10.1080/01621459.1949.10483310
+      \endverb
+      \verb{url}
+      \verb https://www.tandfonline.com/doi/abs/10.1080/01621459.1949.10483310
+      \endverb
+    \endentry
+    \entry{motwani1995randomized}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=2f555526320a1c4028ad0f6328953999}{%
+           family={Motwani},
+           familyi={M\bibinitperiod},
+           given={Rajeev},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=68f523934985e2f967ab2b15f4ded07c}{%
+           family={Raghavan},
+           familyi={R\bibinitperiod},
+           given={Prabhakar},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{fullhash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{fullhashraw}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{bibnamehash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{authorbibnamehash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{authornamehash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{authorfullhash}{7435d054c026cc3abd35ccc8aa119e5d}
+      \strng{authorfullhashraw}{7435d054c026cc3abd35ccc8aa119e5d}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Randomized Algorithms}
+      \field{year}{1995}
+    \endentry
+    \entry{journals/acta/Sedgewick77}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6a9c16ef79ae932cd7e8bc985da5a937}{%
+           family={Sedgewick},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{fullhash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{fullhashraw}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{bibnamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorbibnamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authornamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorfullhash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorfullhashraw}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \field{extraname}{1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Acta Inf.}
+      \field{title}{The Analysis of Quicksort Programs.}
+      \field{volume}{7}
+      \field{year}{1977}
+      \field{pages}{327\bibrangedash 355}
+      \range{pages}{29}
+      \verb{urlraw}
+      \verb http://dblp.uni-trier.de/db/journals/acta/acta7.html#Sedgewick77
+      \endverb
+      \verb{url}
+      \verb http://dblp.uni-trier.de/db/journals/acta/acta7.html#Sedgewick77
+      \endverb
+      \keyw{analysis implementing quicksort}
+    \endentry
+    \entry{359631}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6a9c16ef79ae932cd7e8bc985da5a937}{%
+           family={Sedgewick},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{fullhash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{fullhashraw}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{bibnamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorbibnamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authornamehash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorfullhash}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \strng{authorfullhashraw}{6a9c16ef79ae932cd7e8bc985da5a937}
+      \field{extraname}{2}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper is a practical study of how to implement the Quicksort sorting algorithm and its best variants on real computers, including how to apply various code optimization techniques. A detailed implementation combining the most effective improvements to Quicksort is given, along with a discussion of how to implement it in assembly language. Analytic results describing the performance of the programs are summarized. A variety of special situations are considered from a practical standpoint to illustrate Quicksort's wide applicability as an internal sorting method which requires negligible extra storage.}
+      \field{issn}{0001-0782}
+      \field{journaltitle}{Commun. ACM}
+      \field{number}{10}
+      \field{title}{Implementing Quicksort programs}
+      \field{volume}{21}
+      \field{year}{1978}
+      \field{pages}{847\bibrangedash 857}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1145/359619.359631
+      \endverb
+      \verb{urlraw}
+      \verb http://portal.acm.org/citation.cfm?id=359619.359631&coll=Portal&dl=ACM&CFID=88775871&CFTOKEN=40392553
+      \endverb
+      \verb{url}
+      \verb http://portal.acm.org/citation.cfm?id=359619.359631&coll=Portal&dl=ACM&CFID=88775871&CFTOKEN=40392553
+      \endverb
+      \keyw{2012 implementing kde quicksort seminar}
+    \endentry
+    \entry{UsernameProblem2012}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=93a575777f636107b8f65a815802b18f}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xiaofeng},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=278f8fdde9d1c6899936576e4fad26c6}{%
+           family={Reiter},
+           familyi={R\bibinitperiod},
+           given={Michael\bibnamedelima K.},
+           giveni={M\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{fullhash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{fullhashraw}{30c29191338ca75f02992e0487c49b3b}
+      \strng{bibnamehash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{authorbibnamehash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{authornamehash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{authorfullhash}{30c29191338ca75f02992e0487c49b3b}
+      \strng{authorfullhashraw}{30c29191338ca75f02992e0487c49b3b}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the 19th ACM Conference on Computer and Communications Security}
+      \field{title}{Defending Against Denial-of-Information Attacks in Social Networks}
+      \field{year}{2012}
+      \field{pages}{63\bibrangedash 74}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/2382196.2382206
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

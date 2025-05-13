@@ -1,4 +1,3 @@
-% Probabilistic Data Structures
 \section{Probabilistic Data Structures}
 \begin{frame}{Deterministic vs. Probabilistic Data Structures}
   \begin{columns}
@@ -29,7 +28,7 @@
 
 \begin{frame}{Example: Why PDS? Username Availability}
   \begin{block}{The Problem}
-    A website with millions of users needs to instantly check if a username is available during registration. How?
+    A website with millions of users needs to instantly check if a username is available during registration. How? \parencite{10.1145/362686.362692}
   \end{block}
 
   \begin{columns}
@@ -46,7 +45,7 @@
     \begin{column}{0.5\textwidth}
       \textbf{Probabilistic Approach (Bloom Filter):}
       \begin{itemize}
-        \item Keep a compact Bloom filter in memory.
+        \item Keep a compact Bloom filter in memory \parencite{10.1145/362686.362692}.
         \item Check filter: Is `username` possibly present?
         \item \textbf{Accurate? Mostly.} Small chance of false positive (saying taken when available), needs DB check then.
         \item \textbf{Fast? Yes.} In-memory check is O(k).
@@ -71,7 +70,7 @@
   \begin{block}{Performance Impact (10M users, 1\% error)}
     \begin{itemize}
       \item Memory: $\approx 18$ MB Bloom Filter vs. hundreds of MB for DB index/cache.
-      \item Speed: 99\% of availability checks avoid slow database queries.
+      \item Speed: 99\% of availability checks avoid slow database queries. \parencite{UsernameProblem2012}
     \end{itemize}
   \end{block}
 \end{frame}
@@ -115,7 +114,7 @@
   \begin{columns}
     \begin{column}{0.6\textwidth}
       \begin{itemize}
-        \item Space-efficient probabilistic data structure
+        \item Space-efficient probabilistic data structure \parencite{10.1145/362686.362692}
         \item Tests if an element is a member of a set
         \item Possible false positives, never false negatives
         \item Components:
@@ -187,7 +186,7 @@
     \item \textbf{False positive probability ($p$):}
           \begin{equation}
             p \approx \left(1 - e^{-kn/m}\right)^k
-          \end{equation}
+          \end{equation}\parencite{im/1109191032}
 
     \item \textbf{Optimal size ($m$ bits) for $n$ items, error $p$:}
           \begin{equation}
@@ -216,17 +215,23 @@
   $n$=items, $m$=bits ($m \ll n \times item\_size$), $k$=hashes, $N$=total chars, $L$=key length
 \end{frame}
 
+\begin{frame}{Bloom Filter Simulation}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[height=0.95\textheight]{./programs/bloom_filter_sim/bloom_filter_sim.png}
+  \end{figure}
+\end{frame}
+
 \begin{frame}{Other Applications of Bloom Filters}
-  \vspace{0.5cm}
+  \vspace{0.2cm}
   \begin{columns}
     \begin{column}{0.5\textwidth}
       \textbf{Web/Database:}
       \begin{itemize}
         \item Cache hit/miss optimization (e.g., CDNs)
         \item Avoid unnecessary DB lookups (like username example)
-        \item Recommendation systems (seen items)
+        \item Recommendation systems (seen items) \parencite{im/1109191032}
       \end{itemize}
-      \pause
 
       \textbf{Network:}
       \begin{itemize}
@@ -234,7 +239,6 @@
         \item Network packet routing (track flows efficiently)
         \item P2P network resource discovery
       \end{itemize}
-      \pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \textbf{Security:}
@@ -243,7 +247,6 @@
         \item Spam filtering (known bad IPs/domains)
         \item Password breach checking (HaveIBeenPwned)
       \end{itemize}
-      \pause
 
       \textbf{Big Data:}
       \begin{itemize}
@@ -251,7 +254,6 @@
         \item Distributed data sync (approximate differences)
         \item Genomics (k-mer counting)
       \end{itemize}
-      \pause
     \end{column}
   \end{columns}
 \end{frame}

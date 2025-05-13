@@ -1,5 +1,4 @@
 \documentclass[aspectratio=169]{beamer}
-% For best font rendering with XeLaTeX/LuaLaTeX
 \usepackage{fontspec}
 \usepackage{unicode-math}
 \usepackage{tikz}
@@ -14,7 +13,7 @@
 \usepackage{multirow}
 \usepackage{xcolor}
 \usepackage{listings}
-\usepackage{biblatex}
+\usepackage[style=apa,backend=biber,block=ragged,defernumbers=false]{biblatex}
 
 % TikZ libraries
 \usetikzlibrary{arrows,automata,positioning,shapes,calc,decorations.pathmorphing,patterns,math}
@@ -52,7 +51,7 @@
 \begin{frame}
   \begin{tikzpicture}[remember picture,overlay]
     \node[anchor=south east, xshift=-5mm, yshift=5mm] at (current page.south east) {
-      \includegraphics[width=2cm]{../assets/ku_logo.png}
+      \includegraphics[width=2cm]{./assets/ku_logo.png}
     };
   \end{tikzpicture}
   \titlepage
@@ -88,7 +87,6 @@
     \\[0.2em]
     {\footnotesize Deterministic}
   \end{center}
-  \pause
   \vspace{1.5em}
   % Probabilistic Algorithm (bottom)
   \begin{center}
@@ -112,70 +110,19 @@
 
 \begin{frame}{Types of Probabilistic Algorithms}
   \begin{itemize}
-    \item Las Vegas Algorithms
-    \item Monte Carlo Algorithms
+    \item Las Vegas Algorithms \parencite{lasvegas1979babai}
+    \item Monte Carlo Algorithms \parencite{Metropolis01091949}
   \end{itemize}
 \end{frame}
 % Expanded: Las Vegas Algorithms
 
 \begin{frame}{Las Vegas Algorithms}
-\begin{block}{Definition}
-  Always produce a correct result, but the running time is a random variable (depends on random choices).
-\end{block}
-\pause
-\begin{itemize}
-\item Output is always correct (no error), but time may vary between runs.
-\pause
-\item Useful when correctness is critical, but we can tolerate variable performance.
-\pause
-\item \textbf{Example:} Randomized Quicksort
-\begin{itemize}
-  \item Randomly selects a pivot to avoid worst-case input.
-  \item Always sorts correctly, but running time depends on random choices.
-\end{itemize}
-\pause
-\item \textbf{Other Examples:}
-\begin{itemize}
-  \item Randomized algorithms for minimum cut in graphs (Karger's algorithm)
-\end{itemize}
-\pause
-\item \textbf{Practical Usage in Software:}
-\begin{itemize}
-            \item Randomized Quicksort is widely used in standard libraries (e.g., C++ STL, Java, Python) for efficient sorting, especially to avoid worst-case performance on adversarial inputs.
-            \item Karger's algorithm is used in network reliability analysis tools.
-            \end{itemize}
-            \end{itemize}
-            \end{frame}
+  \textbf{Definition:} A Las Vegas algorithm always produces a correct result or reports failure, with the running time depending on random choices. \parencite{LasVegasGupta1992}
+\end{frame}
 
 % Expanded: Monte Carlo Algorithms
 \begin{frame}{Monte Carlo Algorithms}
-\begin{block}{Definition}
-  Always finish in a fixed amount of time, but may produce an incorrect result with a small probability.
-\end{block}
-\pause
-\begin{itemize}
-\item Running time is predictable (usually polynomial), but there is a chance of error.
-\pause
-\item Useful when speed is more important than absolute certainty, and errors are rare or can be tolerated.
-\pause
-\item \textbf{Example:} Primality Testing (Miller-Rabin)
-\begin{itemize}
-  \item Quickly determines if a number is prime, but may err with small probability.
-  \item Error probability can be reduced by repeating the test.
-\end{itemize}
-\pause
-\item \textbf{Other Examples:}
-\begin{itemize}
-  \item Monte Carlo integration (estimating $\pi$)
-  \item Randomized algorithms for approximate counting
-\end{itemize}
-\pause
-\item \textbf{Practical Usage in Software:}
-\begin{itemize}
-  \item Miller-Rabin primality test is used in cryptographic libraries (e.g., OpenSSL, GnuPG) for generating large prime numbers.
-  \item Monte Carlo integration is used in computer graphics (e.g., rendering engines for global illumination), and in financial modeling for risk analysis.
-\end{itemize}
-  \end{itemize}
+  \textbf{Definition:} A Monte Carlo algorithm has a probability of producing an incorrect result, but its running time is bounded. \parencite{MonteCarloError1991}
 \end{frame}
 
 % New section for applications
@@ -222,54 +169,18 @@
   \end{itemize}
 \end{frame}
 
-% Example: Randomized Quicksort
-\section{Example: Randomized Quicksort}
-
-% New slide: QuickSort vs Randomized QuickSort steps
-\begin{frame}{QuickSort vs Randomized QuickSort}
-  \textbf{QuickSort:}
-  \begin{enumerate}
-    \item Pick a pivot element from the array
-    \item Split array into 3 subarrays: those smaller than pivot, those larger than pivot, and the pivot itself
-    \item Recursively sort the subarrays, and concatenate them
-  \end{enumerate}
-  \vspace{1em}
-  \textbf{Randomized QuickSort:}
-  \begin{enumerate}
-    \item Pick a pivot element \textbf{uniformly at random} from the array
-    \item Split array into 3 subarrays: those smaller than pivot, those larger than pivot, and the pivot itself
-    \item Recursively sort the subarrays, and concatenate them
-  \end{enumerate}
-\end{frame}
-
-% New slide: Worst-case for QuickSort
-\begin{frame}{Example: Randomized Quicksort}
-  \textbf{Recall:} QuickSort can take $\Omega(n^2)$ time to sort an array of size $n$.
-\end{frame}
-
-% New slide: Theorem and expectation for Randomized QuickSort
-\begin{frame}{Randomized QuickSort: Expected Runtime}
-  \textbf{Theorem}
-  \begin{block}{}
-    Randomized QuickSort sorts a given array of length $n$ in $O(n \log n)$ expected time.
-  \end{block}
-  \vspace{1em}
-  \textbf{Note:} On every input, randomized QuickSort takes $O(n \log n)$ time in expectation. On every input, it may take $\Omega(n^2)$ time with some small probability.
-\end{frame}
-
-\input{../programs/quicksort/quicksort_steps.tex}
-
-\input{../programs/analysis_quicksort/analysis_quicksort_steps.tex}
-
-\input{../programs/pi_calculation/pi_calculation_steps.tex}
-
-\input{../programs/bloom_filters/bloom_filters_steps.tex}
-
-% Visual: Deterministic Algorithm
 
 
-% References
-\begin{frame}[allowframebreaks]{References}
+\input{./programs/quicksort/quicksort_steps.tex}
+
+\input{./programs/analysis_quicksort/analysis_quicksort_steps.tex}
+
+\input{./programs/pi_calculation/pi_calculation_steps.tex}
+
+\input{./programs/bloom_filters/bloom_filters_steps.tex}
+
+
+\begin{frame}[allowframebreaks]
   \printbibliography
 \end{frame}
 

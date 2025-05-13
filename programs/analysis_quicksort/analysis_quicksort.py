@@ -203,18 +203,22 @@ def bench_single(sort_name, sort_fn, size, case_type, num_runs):
 
 def run_benchmarks():
     """Run benchmarks focused on specific cases for different algorithms"""
-    # Define array sizes to test. Insertion sort will be run on ALL these sizes.
-    # BE PREPARED FOR INSERTION SORT TO BE EXTREMELY SLOW FOR SIZES > ~50,000.
-    quicksort_sizes = [100, 1000, 10000, 50000, 100000, 250000, 500000, 1000000]
+    # Define array sizes to test.
+    # We'll use different size sets for Quicksort vs Insertion sort
+    quicksort_sizes = [100, 500, 1000, 2500, 5000, 10000, 20000, 30000, 50000, 75000, 100000]
+
+    # Maximum size to run insertion sort on (since it's O(n²))
+    insertion_sort_max_size = 25000
 
     # Focus on specific cases as requested
-    # Deterministic Quicksort: worst case (sorted array)
-    # Randomized Quicksort: average case (random array)
-    # Insertion Sort: standard case (random array)
+    # Setting up algorithms with their worst/best case scenarios:
+    # - Deterministic Quicksort: worst case (sorted array)
+    # - Insertion Sort: worst case (reversed array)
+    # - Randomized Quicksort: average case (random array)
     case_mapping = {
         "deterministic": "sorted",
         "randomized": "random",
-        "insertion": "random"
+        "insertion": "reversed"
     }
 
     sort_functions = {
@@ -237,9 +241,15 @@ def run_benchmarks():
     with ProcessPoolExecutor(max_workers=4) as executor: # Use up to 4 CPU cores
         for size in quicksort_sizes:
             # Adjust number of runs based on size to keep total time reasonable
-            if size <= 1000:
-                num_runs = 10
+            if size <= 7500:
+                num_runs = 30
             elif size <= 10000:
+                num_runs = 20
+            elif size <= 25000:
+                num_runs = 15
+            elif size <= 50000:
+                num_runs = 10
+            elif size <= 75000:
                 num_runs = 5
             elif size <= 100000:
                 num_runs = 3
@@ -248,16 +258,21 @@ def run_benchmarks():
 
             # Submit tasks for all algorithms for the current size
             for sort_name, sort_fn in sort_functions.items():
-                 # Use smaller number of runs for Insertion sort at very large sizes
+                 # Use smaller number of runs for Insertion sort, especially for worst-case
                  current_num_runs = num_runs
                  if sort_name == "insertion":
-                     if size > 50000: current_num_runs = max(1, num_runs // 2)
-                     if size > 100000: current_num_runs = 1
+                     # Reduce runs for insertion sort as it's O(n²)
+                     if size >= 1000: current_num_runs = max(1, num_runs // 3)
+                     if size >= 5000: current_num_runs = max(1, num_runs // 5)
+                     if size >= 10000: current_num_runs = 1
+                     # Skip insertion sort for sizes that are too large
+                     if size > insertion_sort_max_size:
+                         print(f"  Skipping Insertion Sort for size {size:,} due to O(n²) time complexity.")
+                         continue
                      # Add a hard skip for sizes that are almost certainly too slow
                      if size > 500000: # Even 500k is likely hours, 1M is days
                          print(f"  Skipping Insertion Sort for size {size:,} due to extreme O(n^2) runtime.")
                          continue
-
 
                  case_type = case_mapping[sort_name]
 
@@ -299,8 +314,11 @@ def run_benchmarks():
 # ----- VISUALIZATION FUNCTIONS -----
 
 def plot_results(sizes, results):
-    """Create a plot comparing sorting algorithms"""
-    plt.figure(figsize=(12, 8)) # Make figure slightly larger
+    """Create a more polished plot comparing sorting algorithms"""
+    plt.figure(figsize=(14, 10))  # Larger figure size
+
+    # Set plot style for better aesthetics
+    plt.style.use('seaborn-v0_8-darkgrid')
 
     # Prepare data points, using NaN for missing sizes
     # Only include sizes for which data exists
@@ -313,66 +331,102 @@ def plot_results(sizes, results):
     insertion_sizes = sorted(results.get("insertion", {}).keys())
     insertion_times = [results["insertion"][size] for size in insertion_sizes]
 
-
-    # Plot with more detailed markers and styling
+    # Plot with enhanced styling
     if det_sizes:
         plt.plot(det_sizes, det_times, 'ro-', label='Deterministic Quicksort (worst-case: sorted array)',
-                 linewidth=2, markersize=8)
+                 linewidth=3, markersize=10, markeredgecolor='black', markeredgewidth=1)
     if rand_sizes:
         plt.plot(rand_sizes, rand_times, 'bs-', label='Randomized Quicksort (random array)',
-                 linewidth=2, markersize=8)
+                 linewidth=3, markersize=10, markeredgecolor='black', markeredgewidth=1)
 
     # Add insertion sort if data exists for any size
     if insertion_sizes:
-        plt.plot(insertion_sizes, insertion_times, 'gd-', label='Insertion Sort (random array, O(n²))',
-                 linewidth=2, markersize=8)
+        plt.plot(insertion_sizes, insertion_times, 'gD-', label='Insertion Sort (worst-case: reversed array)',
+                 linewidth=3, markersize=10, markeredgecolor='black', markeredgewidth=1)
 
-    # Add theoretical complexity lines for reference on a log-log plot
-    # Use sizes that actually have data for scaling
-    if det_sizes and len(det_sizes) > 1:
-         # For n^2 complexity (scaled to match a point on the deterministic data)
-         valid_det_sizes = [s for s in det_sizes if s > 0]
-         if valid_det_sizes: # Check if list is not empty
-             # Use the largest valid size with data
-             last_det_size = valid_det_sizes[-1]
-             last_det_time = results["deterministic"][last_det_size]
-             # Calculate factor based on the last data point
-             if last_det_size > 0 and last_det_time > 0:
-                 n2_factor = last_det_time / (last_det_size**2) * 0.5 # Adjust factor for better visual fit
-                 n2_line = [size**2 * n2_factor for size in valid_det_sizes]
-                 plt.plot(valid_det_sizes, n2_line, 'r--', alpha=0.5, label='O(n²) reference')
+    # Get all unique sizes that were actually benchmarked for reference lines
+    all_tested_sizes = sorted(set().union(results.get("deterministic", {}).keys(),
+                                         results.get("randomized", {}).keys(),
+                                         results.get("insertion", {}).keys()))
 
+    # Add theoretical complexity lines for reference
+    if all_tested_sizes and len(all_tested_sizes) > 1:
+        reference_sizes = np.array(all_tested_sizes)
 
-    if rand_sizes and len(rand_sizes) > 1:
-        # For n log n complexity (scaled to match a point on the randomized data)
-        valid_rand_sizes = [s for s in rand_sizes if s > 1] # log(1) is 0
-        if valid_rand_sizes: # Check if list is not empty
-            last_rand_size = valid_rand_sizes[-1]
-            last_rand_time = results["randomized"][last_rand_size]
-            if last_rand_size > 1 and last_rand_time > 0:
-                 # Calculate factor based on the last data point
-                 nlogn_factor = last_rand_time / (last_rand_size * math.log(last_rand_size)) * 0.8 # Adjust factor
-                 nlogn_line = [size * math.log(size) * nlogn_factor for size in valid_rand_sizes]
-                 plt.plot(valid_rand_sizes, nlogn_line, 'b--', alpha=0.5, label='O(n log n) reference')
+        # Add more points for smoother curves
+        extended_sizes = np.logspace(np.log10(min(reference_sizes)), np.log10(max(reference_sizes)), 100)
 
+        # Calculate reference scaling factors based on middle-sized array
+        mid_index = len(reference_sizes) // 2
+        mid_size = reference_sizes[mid_index]
 
-    plt.title('Sorting Algorithm Performance Comparison', fontsize=16)
-    plt.xlabel('Array Size (n)', fontsize=14)
-    plt.ylabel('Time (seconds)', fontsize=14)
-    plt.grid(True, which="both", alpha=0.3) # Grid on both major and minor ticks
-    plt.legend(fontsize=10)
+        # Get actual times at the middle size (if available)
+        mid_det_time = results.get("deterministic", {}).get(mid_size, None)
+        mid_rand_time = results.get("randomized", {}).get(mid_size, None)
+        mid_ins_time = results.get("insertion", {}).get(mid_size, None)
+
+        # O(n²) complexity reference
+        if mid_ins_time is not None:
+            n2_factor = mid_ins_time / (mid_size**2) * 0.8  # Factor with visual adjustment
+            n2_times = [size**2 * n2_factor for size in extended_sizes]
+            plt.plot(extended_sizes, n2_times, 'k--', alpha=0.7, linewidth=2, label='O(n²) reference')
+
+        # O(n log n) complexity reference
+        if mid_rand_time is not None:
+            nlogn_factor = mid_rand_time / (mid_size * np.log(mid_size)) * 0.8  # Factor with visual adjustment
+            nlogn_times = [size * np.log(size) * nlogn_factor for size in extended_sizes]
+            plt.plot(extended_sizes, nlogn_times, 'k:', alpha=0.7, linewidth=2, label='O(n log n) reference')
+
+    # Enhanced styling
+    plt.title('Sorting Algorithm Performance Comparison', fontsize=20, fontweight='bold', pad=20)
+    plt.xlabel('Array Size (n)', fontsize=16, fontweight='bold', labelpad=10)
+    plt.ylabel('Time (seconds)', fontsize=16, fontweight='bold', labelpad=10)
+    plt.grid(True, which="both", alpha=0.3, linestyle='--')
+
+    # Create a more visually appealing legend
+    legend = plt.legend(fontsize=12, frameon=True, fancybox=True, framealpha=0.9,
+                        shadow=True, borderpad=1, loc='upper left')
+    legend.get_frame().set_facecolor('#f0f0f0')
+
     plt.xscale('log')
     plt.yscale('log')
 
+    # Annotate key points if data is available
+    if det_sizes and rand_sizes and insertion_sizes:
+        # Find the largest common size for comparison annotations
+        common_sizes = set(det_sizes) & set(rand_sizes) & set(insertion_sizes)
+        if common_sizes:
+            max_common = max(common_sizes)
+            det_time = results["deterministic"][max_common]
+            rand_time = results["randomized"][max_common]
+            ins_time = results["insertion"][max_common]
+
+            # Add annotations showing relative performance
+            if ins_time > det_time:
+                ratio = ins_time / det_time
+                plt.annotate(f"~{ratio:.0f}x slower",
+                            xy=(max_common, ins_time),
+                            xytext=(max_common*0.8, ins_time*0.5),
+                            arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"),
+                            fontsize=12)
+
+    # Add a text box explaining the time complexities
+    plt.figtext(0.02, 0.02,
+               "Time Complexity Analysis:\n"
+               "- Insertion Sort (reversed): O(n²) - Quadratic time\n"
+               "- Deterministic Quicksort (sorted): O(n²) worst case, but median-of-three helps\n"
+               "- Randomized Quicksort (random): O(n log n) average case",
+               fontsize=12,
+               bbox=dict(facecolor='white', alpha=0.7, boxstyle='round,pad=0.5'))
 
     plt.tight_layout()
-    plt.savefig('sorting_algorithms_benchmark.png', dpi=300)
+    plt.savefig('./sorting_algorithms_benchmark.png', dpi=300, bbox_inches='tight')
     plt.show()
 
     # Print performance comparison table
     print("\nPerformance Comparison Table:")
     print("-" * 90) # Adjusted width
-    print(f"{'Array Size':>12} | {'Deterministic QS (Sorted)':>23} | {'Randomized QS (Random)':>23} | {'Insertion Sort (Random)':>23} | {'QS Speedup (Det/Rand)':>22}") # Adjusted headers
+    print(f"{'Array Size':>12} | {'Deterministic QS (Worst)':>23} | {'Randomized QS (Random)':>23} | {'Insertion Sort (Worst)':>23} | {'QS Speedup (Det/Rand)':>22}") # Adjusted headers
     print("-" * 90) # Adjusted width
 
     # Get all unique sizes that were actually benchmarked
