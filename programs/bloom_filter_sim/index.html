@@ -5,9 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bloom Filter Simulation</title>
-  <script src="../../js/tailwind.min.js"></script>
-  <script src="../../js/lodash.min.js"></script>
-  <script src="../../js/crypto-js.min.js"></script>
+  <script>
+    function loadFallbackScript(src) {
+      const script = document.createElement('script');
+      script.src = src;
+      document.head.appendChild(script);
+    }
+  </script>
+  <script src="../../js/tailwind.min.js" onerror="loadFallbackScript('https://cdn.tailwindcss.com')"></script>
+  <script src="../../js/lodash.min.js"
+    onerror="loadFallbackScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js')"></script>
+  <script src="../../js/crypto-js.min.js"
+    onerror="loadFallbackScript('https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js')"></script>
 </head>
 
 <body class="bg-gray-100 min-h-screen">

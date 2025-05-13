@@ -5,8 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pi Calculation with p5.js</title>
-  <script src="../../js/p5.min.js"></script>
-  <script src="../../js/tailwind.min.js"></script>
+  <script>
+    function loadFallbackScript(src) {
+      const script = document.createElement('script');
+      script.src = src;
+      document.head.appendChild(script);
+    }
+  </script>
+  <script src="../../js/p5.min.js"
+    onerror="loadFallbackScript('https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js')"></script>
+  <script src="../../js/tailwind.min.js" onerror="loadFallbackScript('https://cdn.tailwindcss.com')"></script>
 </head>
 
 <body class="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4 font-sans">
@@ -50,7 +58,7 @@
   <script>
     let totalPoints = 0;
     let pointsInside = 0;
-              let size = 400;
+    let size = 400;
     let radius = size;
     let running = true;
     let pointsPerFrame = 300;
