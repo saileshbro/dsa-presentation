@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N-Queens Simulation</title>
+  <script>
+    function loadFallbackScript(src) {
+      const script = document.createElement('script');
+      script.src = src;
+      document.head.appendChild(script);
+    }
+  </script>
+  <script src="../../js/tailwind.min.js" onerror="loadFallbackScript('https://cdn.tailwindcss.com')"></script>
+</head>
+
+<body class="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-2 font-sans">
+  <div class="w-full max-w-6xl bg-white p-6 rounded-lg border border-gray-300 shadow-none">
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Main Board and Controls Card -->
+      <div class="lg:col-span-2">
+        <header class="text-start mb-8">
+          <h1 class="text-3xl font-bold text-purple-700 mb-2">N-Queens Simulation <span
+              class="text-base text-gray-500">(Las
+              Vegas Algorithm)</span></h1>
+          <p class="text-gray-600 max-w-2xl mb-2">The <b>N-Queens problem</b> asks you to place N queens on an N×N
+            chessboard so that no two queens threaten each other. This simulation uses the <b>Las Vegas algorithm</b>:
+            for
+            each row, it randomly selects a safe column. If it gets stuck, it restarts. The process is animated and
+            interactive.</p>
+        </header>
+        <div class="bg-white border border-gray-300 rounded-lg p-6 flex flex-col gap-4">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-2">
+            <h2 class="text-xl font-semibold text-purple-700">Chessboard & Controls</h2>
+            <div class="flex gap-2 flex-wrap">
+              <button
+                class="board-size-btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors"
+                data-size="4">4x4</button>
+              <button
+                class="board-size-btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors"
+                data-size="8">8x8</button>
+              <button
+                class="board-size-btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors"
+                data-size="12">12x12</button>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
+            <div id="board-container" class="mb-2 flex-1"></div>
+            <div class="flex flex-col gap-4 w-full">
+              <div class="flex gap-2">
+                <button id="solve-btn"
+                  class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg transition-colors flex-1">Solve</button>
+                <button id="reset-btn"
+                  class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition-colors flex-1">Reset</button>
+              </div>
+              <div class="flex flex-row flex-wrap items-center gap-2 w-full">
+                <label for="speed-slider" class="text-gray-700 font-medium whitespace-nowrap">Animation Speed:</label>
+                <span class="text-xs text-gray-500">Slow</span>
+                <input type="range" id="speed-slider" min="10" max="250" value="100" step="10"
+                  class="w-32 min-w-0 flex-shrink" style="min-width: 0;">
+                <span class="text-xs text-gray-500">Fast</span>
+              </div>
+              <div class="flex flex-col gap-2 mt-2">
+                <div class="bg-gray-50 rounded p-2 flex items-center justify-between">
+                  <span class="text-gray-700">Attempts</span>
+                  <span id="attempts-counter" class="font-bold text-indigo-600">0</span>
+                </div>
+                <div class="bg-gray-50 rounded p-2 flex items-center justify-between">
+                  <span class="text-gray-700">Steps</span>
+                  <span id="steps-counter" class="font-bold text-indigo-600">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full mt-2">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-sm text-gray-600">Current Attempt Progress:</span>
+              <span id="progress-label" class="text-xs text-gray-500"></span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+              <div id="progress-bar" class="bg-purple-500 h-4 rounded-full transition-all duration-300"
+                style="width:0%"></div>
+            </div>
+          </div>
+          <div id="status" class="text-lg text-gray-700 mt-2"></div>
+        </div>
+      </div>
+      <!-- Sidebar: Tracker and Info Card -->
+      <aside class="bg-white border border-gray-300 rounded-lg p-6 flex flex-col ">
+        <h2 class="text-xl font-semibold text-purple-700 mb-4">Step Tracker</h2>
+        <div id="track-list" class="flex-1 overflow-y-auto border rounded p-2 bg-gray-50 mb-2 text-sm max-h-[400px]">
+        </div>
+        <div class="text-xs text-gray-500 mb-4">Click a step to highlight it on the board.</div>
+        <div class="border-t pt-4 mt-2">
+          <h3 class="text-lg font-semibold text-gray-800 mb-1">How Las Vegas Works</h3>
+          <ul class="list-disc list-inside text-gray-700 text-sm mb-2">
+            <li>For each row, randomly select a safe column.</li>
+            <li>If stuck (no safe columns), restart from scratch.</li>
+            <li>Always finds a correct solution (if one exists), but runtime is random.</li>
+          </ul>
+          <h3 class="text-lg font-semibold text-gray-800 mb-1 mt-4">About N-Queens</h3>
+          <ul class="list-disc list-inside text-gray-700 text-sm">
+            <li>Place N queens on an N×N chessboard so that no two threaten each other.</li>
+            <li>Classic example of a constraint satisfaction problem.</li>
+            <li>Number of possible arrangements grows rapidly with N (N!).</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <script src="nqueens.js"></script>
+</body>
+
+</html>
