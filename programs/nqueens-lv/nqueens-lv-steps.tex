@@ -3,13 +3,13 @@
   \begin{itemize}
     \item Place $N$ queens on an $N \times N$ chessboard so that no two queens threaten each other.
     \item Each queen must be in a different row, column, and diagonal.
-    \item Number of possible arrangements grows rapidly with $N$ ($N!$ for rows/columns).
+    \item Number of possible arrangements grows rapidly with $N$ ($N!$ for rows/columns). \parencite{BELL20091}
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Why is N-Queens Interesting?}
   \begin{itemize}
-    \item \textbf{Computational Challenge:} Classic example of a constraint satisfaction problem.
+    \item \textbf{Computational Challenge:} Classic example of a constraint satisfaction problem. \parencite{motwani1995randomized}
     \item \textbf{Applications:}
           \begin{itemize}
             \item Constraint satisfaction problems
@@ -24,7 +24,7 @@
   \begin{itemize}
     \item Systematically tries to place queens row by row
     \item Backtracks when a conflict is detected
-    \item \textbf{Time complexity:} $O(N!)$ in the worst case
+    \item \textbf{Time complexity:} $O(N!)$ in the worst case \parencite{motwani1995randomized}
   \end{itemize}
 \end{frame}
 
@@ -50,8 +50,8 @@
 
 \begin{frame}{Why Consider Randomization?}
   \begin{itemize}
-    \item Deterministic search (backtracking) can be slow for large $N$
-    \item Randomized (Las Vegas) algorithms can find solutions much faster on average
+    \item Deterministic search (backtracking) can be slow for large $N$ \parencite{motwani1995randomized}
+    \item Randomized (Las Vegas) algorithms can find solutions much faster on average \parencite{lasvegas1979babai}
     \item Demonstrates the power of probabilistic algorithms in combinatorial search
   \end{itemize}
 \end{frame}
@@ -61,7 +61,7 @@
     \item For each row, randomly select a safe column
     \item If stuck (no safe columns), restart from scratch
     \item Always finds a correct solution (if one exists), but runtime is random
-    \item \textbf{Expected time:} Much faster than backtracking for large $N$
+    \item \textbf{Expected time:} Much faster than backtracking for large $N$ \parencite{lasvegas1979babai}
   \end{itemize}
 \end{frame}
 
@@ -121,8 +121,8 @@
 
 \begin{frame}{Key Insights}
   \begin{itemize}
-    \item Randomization can dramatically improve performance for some combinatorial problems
-    \item Las Vegas algorithms always produce correct results, but runtime is a random variable
+    \item Randomization can dramatically improve performance for some combinatorial problems \parencite{motwani1995randomized}
+    \item Las Vegas algorithms always produce correct results, but runtime is a random variable \parencite{lasvegas1979babai}
     \item For N-Queens, Las Vegas approach is practical for very large $N$ where backtracking is infeasible
     \item Illustrates the power of probabilistic algorithms in search and optimization
   \end{itemize}
